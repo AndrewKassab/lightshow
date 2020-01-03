@@ -24,6 +24,17 @@ void default_setup(CRGB leds[]){
   FastLED.addLeds<WS2812, 2, GRB>(leds, 262);
 }
 
+void countdown(CRGB leds[]){
+  set_to_color(leds, middle_top_middle - 2, middle_top_middle+2, 255, 255, 255);
+  FastLED.show();
+
+  for (int i = 0; i <= 4; i++){
+    delay(1000);
+    turn_one_off(leds, middle_top_middle - 2 + i);
+    FastLED.show();
+  }
+}
+
 void light_all_corners(CRGB leds[], int r, int g, int b){
   leds[left_top_left_corner] = CRGB(r,g,b);
   leds[left_top_right_corner] = CRGB(r,g,b);
