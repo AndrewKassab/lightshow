@@ -129,8 +129,14 @@ void single_trace(CRGB leds[], int startIndex, int endIndex, int thickness, int 
     delay(delayTime);
   }
   // make sure last few turn off
-  for (int i = 0; i >= thickness; i++){
+  for (int i = 0; i <= thickness; i++){
     leds[endIndex-i] = CRGB(0,0,0);
   }
   FastLED.show();
+}
+
+void turn_all_off(CRGB leds[]){
+  for (int i = start; i <= end; i++){
+    leds[i] = CRGB(0,0,0);
+  }
 }
