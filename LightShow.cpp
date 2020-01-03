@@ -117,3 +117,20 @@ void set_right_bridge(CRGB leds[], int r, int g, int b){
 void set_left_bridge(CRGB leds[], int r, int g, int b){
   set_to_color(leds, left_bottom_right_corner, middle_bottom_left_corner, r, g, b);
 }
+
+void single_trace(CRGB leds[], int startIndex, int endIndex, int thickness, int delay, int r, int g, int b){
+  // trace
+  for (int i = startIndex; i <= endIndex; i++){
+    for (int j = 0; j < thickness, j++){
+      leds[i+j] = CRGB(r,g,b); 
+    }
+    FastLED.show();
+    leds[i] = CRGB(0,0,0);
+    delay(delay);
+  }
+  // make sure last few turn off
+  for (int i = 0; i >= thickness; i++){
+    leds[endIndex-i] = CRGB(0,0,0);
+  }
+  FastLED.show();
+}
