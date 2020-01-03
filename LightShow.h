@@ -30,6 +30,8 @@ void set_one_to_color(CRGB leds[], int index, int r, int g, int b);
 
 void turn_off(CRGB leds[], int startIndex, int endIndex);
 
+void turn_one_off(CRGB leds[], int index);
+
 void light_all_corners(CRGB leds[], int r, int g, int b);
 
 void turn_off_all_corners(CRGB leds[]);
