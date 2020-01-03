@@ -1,8 +1,9 @@
+#ifndef LIGHTSHOW
+#define LIGHTSHOW 
+
 #include <FastLED.h> 
 
 #define NUM_LEDS 262
-
-CRGB leds[NUM_LEDS]; 
 
 #define left_top_right_corner 20
 #define left_top_left_corner 40
@@ -23,6 +24,8 @@ CRGB leds[NUM_LEDS];
 #define start 1
 #define end 260
 
-void set_to_color(int startIndex, int endIndex, int r, int g, int b);
+void set_to_color(CRGB leds[], int startIndex, int endIndex, int r, int g, int b);
 
-void turn_off(int startIndex, int endIndex);
+void turn_off(CRGB leds[], int startIndex, int endIndex);
+
+#endif
