@@ -6,10 +6,8 @@ void set_to_color(CRGB leds[], int startIndex, int endIndex, int r, int g, int b
   }
 }
 
-void set_one_to_color(CRGB leds[], int index){
-  for (int i = startIndex; i <= endIndex; i++){
-    leds[i] = CRGB(r,g,b);
-  }
+void set_one_to_color(CRGB leds[], int index, int r, int g, int b){
+  leds[index] = CRGB(r,g,b);
 }
 
 void turn_off(CRGB leds[], int startIndex, int endIndex){

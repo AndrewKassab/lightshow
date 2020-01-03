@@ -26,7 +26,7 @@
 
 void set_to_color(CRGB leds[], int startIndex, int endIndex, int r, int g, int b);
 
-void set_one_to_color(CRGB leds[], int index);
+void set_one_to_color(CRGB leds[], int index, int r, int g, int b);
 
 void turn_off(CRGB leds[], int startIndex, int endIndex);
 
