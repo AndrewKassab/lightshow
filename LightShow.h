@@ -28,4 +28,6 @@ void set_to_color(CRGB leds[], int startIndex, int endIndex, int r, int g, int b
 
 void turn_off(CRGB leds[], int startIndex, int endIndex);
 
+void default_setup();
+
 #endif
