@@ -53,11 +53,11 @@ void turn_off_all_corners(CRGB leds[]){
 }
 
 void set_left_square_left(CRGB leds[], int r, int g, int b){
-  set_to_color(leds, left_top_left_corner, left_bottom_left_corner, r, b, b);
+  set_to_color(leds, left_top_left_corner, left_bottom_left_corner-1, r, b, b);
 }
 
 void set_left_square_right(CRGB leds[], int r, int g, int b){
-  set_to_color(leds, start, left_bottom_left_corner, r, b, b);
+  set_to_color(leds, start, left_top_right_corner-1, r, b, b);
   set_to_color(leds, left_bottom_right_corner, left_bottom_right_corner, r, b, b);
 }
 
@@ -66,10 +66,10 @@ void set_left_square_bottom(CRGB leds[], int r, int g , int b){
 }
 
 void set_left_square_top(CRGB leds[], int r, int g , int b){
-  set_to_color(leds, left_top_right_corner, left_top_left_corner
+  set_to_color(leds, left_top_right_corner, left_top_left_corner-1, r, g, b);
 }
 
-void set_middle_left(CRGB leds[]. int r, int g, int b){
+void set_middle_left(CRGB leds[], int r, int g, int b){
   set_to_color(leds, middle_bottom_left_corner, middle_top_left_corner, r, g, b);
 }
 
@@ -95,15 +95,15 @@ void set_right_square_left(CRGB leds[], int r, int g, int b){
 }
 
 void set_right_square_top(CRGB leds[], int r, int g, int b){
-  set_to_color(leds, right_top_right_corner, right_top_left_corner, r, g, b);
+  set_to_color(leds, right_top_right_corner, right_top_left_corner-1, r, g, b);
 }
 
 void set_right_square_right(CRGB leds[], int r, int g, int b){
-  set_to_color(leds, right_bottom_right_corner, right_top_right_corner, r, g, b);
+  set_to_color(leds, right_bottom_right_corner, right_top_right_corner-1, r, g, b);
 }
 
 void set_right_square_bottom(CRGB leds[], int r, int g, int b){
-  set_to_color(leds, right_bottom_left_corner, right_bottom_right_corner, r, g, b);
+  set_to_color(leds, right_bottom_left_corner, right_bottom_right_corner-1, r, g, b);
 }
 
 void set_right_bridge(CRGB leds[], int r, int g, int b){
