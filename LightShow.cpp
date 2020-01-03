@@ -38,6 +38,22 @@ void light_all_corners(CRGB leds[], int r, int g, int b){
   leds[right_top_left_corner] = CRGB(r,g,b);
 }
 
+void turn_off_all_corners(CRGB leds[]){ 
+  leds[left_top_left_corner] = CRGB(0,0,0);
+  leds[left_top_right_corner] = CRGB(0,0,0);
+  leds[left_bottom_left_corner] = CRGB(0,0,0);
+  leds[left_bottom_right_corner] = CRGB(0,0,0);
+  leds[middle_bottom_left_corner] = CRGB(0,0,0);
+  leds[middle_bottom_right_corner] = CRGB(0,0,0);
+  leds[middle_top_left_corner] = CRGB(0,0,0);
+  leds[middle_top_middle] = CRGB(0,0,0);
+  leds[middle_top_right_corner] = CRGB(0,0,0);
+  leds[right_bottom_right_corner] = CRGB(0,0,0);
+  leds[right_bottom_left_corner] = CRGB(0,0,0);
+  leds[right_top_right_corner] = CRGB(0,0,0);
+  leds[right_top_left_corner] = CRGB(0,0,0);
+}
+
 void set_left_square_left(CRGB leds[], int r, int g, int b){
   set_to_color(leds, left_top_left_corner, left_bottom_left_corner, r, b, b);
 }
