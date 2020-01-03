@@ -26,10 +26,40 @@
 
 void set_to_color(CRGB leds[], int startIndex, int endIndex, int r, int g, int b);
 
+void set_one_to_color(CRGB leds[], index);
+
 void turn_off(CRGB leds[], int startIndex, int endIndex);
 
 void light_all_corners(CRGB leds[], int r, int g, int b);
 
 void default_setup(CRGB leds[]);
+
+void set_left_square_left(CRGB leds[], int r, int g, int b);
+
+void set_left_square_right(CRGB leds[], int r, int g, int b);
+
+void set_left_square_bottom(CRGB leds[], int r, int g, int b);
+
+void set_left_square_top(CRGB leds[], int r, int g, int b);
+
+void set_right_square_left(CRGB leds[], int r, int g, int b);
+
+void set_right_square_right(CRGB leds[], int r, int g, int b);
+
+void set_right_square_bottom(CRGB leds[], int r, int g, int b);
+
+void set_right_square_top(CRGB leds[], int r, int g, int b);
+
+void set_middle_left(CRGB leds[], int r, int g, int b);
+
+void set_middle_top_left(CRGB leds[], int r, int g, int b);
+
+void set_middle_top_right(CRGB leds[], int r, int g, int b);
+
+void set_middle_middle(CRGB leds[], int r, int g, int b);
+
+void set_left_bridge(CRGB leds[], int r, int g, int b);
+
+void set_right_bridge(CRGB leds[], int r, int g, int b);
 
 #endif
