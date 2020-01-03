@@ -30,6 +30,6 @@ void turn_off(CRGB leds[], int startIndex, int endIndex);
 
 void light_all_corners(CRGB leds[], int r, int g, int b);
 
-void default_setup();
+void default_setup(CRGB leds[]);
 
 #endif
