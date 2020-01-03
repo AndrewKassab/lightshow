@@ -120,7 +120,7 @@ void set_left_bridge(CRGB leds[], int r, int g, int b){
 
 void single_trace(CRGB leds[], int startIndex, int endIndex, int thickness, int delayTime, int r, int g, int b){
   // trace
-  for (int i = startIndex; i <= endIndex; i++){
+  for (int i = startIndex; i <= endIndex - thickness + 1; i++){
     for (int j = 0; j < thickness; j++){
       leds[i+j] = CRGB(r,g,b); 
     }
