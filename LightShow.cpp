@@ -12,7 +12,7 @@ void turn_off(CRGB leds[], int startIndex, int endIndex){
   }
 }
 
-void default_setup(){
+void default_setup(CRGB leds[]){
   FastLED.addLeds<WS2812, 2, GRB>(leds, 262);
 }
 
