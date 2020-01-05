@@ -1,3 +1,6 @@
+#ifndef LIGHTSEGMENT 
+#define LIGHTSEGMENT 
+
 #include "LightShow.hpp"
 
 class LightSegment{
@@ -12,3 +15,5 @@ class LightSegment{
     void setToColor(int r, int g, int b);
     void turnOff();
 };
+
+#endif
