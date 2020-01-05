@@ -2,10 +2,11 @@
 #define LIGHTSHOW 
 
 #include <FastLED.h> 
+#include "LightSegment.hpp"
 
 #define NUM_LEDS 262
 
-#define left_top_right_corner 20
+#define left_top_right_corner et0
 #define left_top_left_corner 40
 #define left_bottom_left_corner 60
 #define left_bottom_right_corner 80
@@ -23,6 +24,25 @@
 
 #define start 1
 #define end 260
+
+LightSegment * leftSquare;
+LightSegment * leftSquareLeft;
+LightSegment * leftSquareTop;
+LightSegment * leftSquareRight;
+LightSegment * leftSquareBottom;
+LightSegment * rightSquare;
+LightSegment * rightSquareTop;
+LightSegment * rightSquareRight;
+LightSegment * rightSquareLeft;
+LightSegment * rightSquareBottom;
+LightSegment * middleArch;
+LightSegment * middleTop; 
+LightSegment * middleLeft;
+LightSegment * middleRight;
+LightSegment * middleTopLeft;
+LightSegment * middleTopRight;
+LightSegment * rightBridge;
+LightSegment * leftBridge;
 
 void set_to_color(CRGB leds[], int startIndex, int endIndex, int r, int g, int b);
 
