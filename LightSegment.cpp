@@ -1,5 +1,4 @@
 #include "LightSegment.hpp"
-#include "LightShow.hpp"
 
 LightSegment::LightSegment(CRGB leds[], int startIndex, int endIndex){
   this->r = 0;
@@ -11,9 +10,13 @@ LightSegment::LightSegment(CRGB leds[], int startIndex, int endIndex){
 } 
 
 void LightSegment::setToColor(int r, int g, int b){
-  set_to_color(leds, startIndex, endIndex, r, g, b);
+  for (int i = startIndex; i <= endIndex; i++){
+    leds[i] = CRGB(r,g,b);
+  }
 }
 
 void LightSegment::turnOff(){
-  turn_off(leds, startIndex, endIndex);
+  for (int i = startIndex; i <= endIndex; i++){
+    leds[i] = CRGB(0,0,0);
+  }
 }

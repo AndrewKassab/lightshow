@@ -25,25 +25,6 @@
 #define start 1
 #define end 260
 
-LightSegment * leftSquare;
-LightSegment * leftSquareLeft;
-LightSegment * leftSquareTop;
-LightSegment * leftSquareRight;
-LightSegment * leftSquareBottom;
-LightSegment * rightSquare;
-LightSegment * rightSquareTop;
-LightSegment * rightSquareRight;
-LightSegment * rightSquareLeft;
-LightSegment * rightSquareBottom;
-LightSegment * middleArch;
-LightSegment * middleTop; 
-LightSegment * middleLeft;
-LightSegment * middleRight;
-LightSegment * middleTopLeft;
-LightSegment * middleTopRight;
-LightSegment * rightBridge;
-LightSegment * leftBridge;
-
 void set_to_color(CRGB leds[], int startIndex, int endIndex, int r, int g, int b);
 
 void set_one_to_color(CRGB leds[], int index, int r, int g, int b);

@@ -22,24 +22,6 @@ void turn_one_off(CRGB leds[], int index){
 
 void default_setup(CRGB leds[]){
   FastLED.addLeds<WS2812, 2, GRB>(leds, 262);
-  leftSquare = new LightSegment(leds, start, left_bottom_right_corner);
-  leftSquareLeft = new LightSegment(leds, left_top_left_corner, left_bottom_left_corner);
-  leftSquareTop = new LightSegment(leds, left_top_right_corner, left_top_left_corner-1);
-  leftSquareRight = new LightSegment(leds, start, left_top_right_corner-1;
-  leftSquareBottom = new LightSegment(leds, left_bottom_left_corner, left_bottom_right_corner);
-  rightSquare = new LightSegment(leds, right_bottom_left_corner, end);
-  rightSquareTop = new LightSegment(leds, right_top_right_corner, right_top_left_corner-1);
-  rightSquareRight = new LightSegment(leds, right_bottom_right_corner, right_top_right_corner-1);
-  rightSquareLeft = new LightSegment(leds, right_top_left_corner, end);
-  rightSquareBottom = new LightSegment(leds, right_bottom_left_corner, right_bottom_right_corner-1);
-  middleArch = new LightSegment(leds, middle_bottom_left_corner, middle_bottom_right_corner);
-  middleTop; = new LightSegment(leds, middle_top_left_corner, middle_top_right_corner);
-  middleLeft = new LightSegment(leds, middle_bottom_left_corner, middle_top_left_corner);
-  middleRight = new LightSegment(leds, middle_top_right_corner, middle_bottom_right_corner);
-  middleTopLeft = new LightSegment(leds, middle_top_left_corner, middle_top_middle);
-  middleTopRight = new LightSegment(leds, middle_top_middle, middle_top_right_corner);
-  rightBridge = new LightSegment(leds, middle_bottom_right_corner, right_bottom_left_corner);
-  leftBridge = new LightSegment(leds, left_bottom_right_corner, middle_bottom_left_corner);
 }
 
 void countdown(CRGB leds[]){
