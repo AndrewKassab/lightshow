@@ -1,4 +1,5 @@
 #include "LightSegment.hpp"
+#include "LightShow.hpp"
 
 LightSegment::LightSegment(CRGB leds[], int startIndex, int endIndex){
   this->r = 0;
