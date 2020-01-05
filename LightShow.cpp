@@ -1,4 +1,4 @@
-#include "LightShow.hpp"
+#include "LightShow.h"
 
 void set_to_color(CRGB leds[], int startIndex, int endIndex, int r, int g, int b){
   for (int i = startIndex; i <= endIndex; i++){
@@ -25,7 +25,7 @@ void default_setup(CRGB leds[]){
   leftSquare = new LightSegment(leds, start, left_bottom_right_corner);
   leftSquareLeft = new LightSegment(leds, left_top_left_corner, left_bottom_left_corner);
   leftSquareTop = new LightSegment(leds, left_top_right_corner, left_top_left_corner-1);
-  leftSquareRight = new LightSegment(leds), start, left_top_right_corner-1;
+  leftSquareRight = new LightSegment(leds, start, left_top_right_corner-1;
   leftSquareBottom = new LightSegment(leds, left_bottom_left_corner, left_bottom_right_corner);
   rightSquare = new LightSegment(leds, right_bottom_left_corner, end);
   rightSquareTop = new LightSegment(leds, right_top_right_corner, right_top_left_corner-1);
