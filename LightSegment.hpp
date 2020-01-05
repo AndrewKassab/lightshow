@@ -1,7 +1,7 @@
 #ifndef LIGHTSEGMENT 
 #define LIGHTSEGMENT 
 
-#include "LightShow.hpp"
+#include <FastLED.h>
 
 class LightSegment{
   public: 

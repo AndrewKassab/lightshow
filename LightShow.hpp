@@ -6,7 +6,7 @@
 
 #define NUM_LEDS 262
 
-#define left_top_right_corner et0
+#define left_top_right_corner 20
 #define left_top_left_corner 40
 #define left_bottom_left_corner 60
 #define left_bottom_right_corner 80
