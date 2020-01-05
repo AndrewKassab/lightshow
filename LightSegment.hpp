@@ -5,8 +5,7 @@
 
 class LightSegment{
   public: 
-    LightSegment(CRGB leds[], int startIndex, int endIndex);
-    CRGB leds;
+    LightSegment(CRGB * leds, int startIndex, int endIndex);
     int startIndex;
     int endIndex;
     int r;
@@ -14,6 +13,7 @@ class LightSegment{
     int b;
     void setToColor(int r, int g, int b);
     void turnOff();
+    CRGB * leds;
 };
 
 #endif
