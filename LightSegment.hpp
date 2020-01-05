@@ -2,7 +2,7 @@
 
 class LightSegment{
   public: 
-    LightSegment(int startIndex, int endIndex);
+    LightSegment(CRGB leds[], int startIndex, int endIndex);
     CRGB leds;
     int startIndex;
     int endIndex;
