@@ -1,4 +1,4 @@
-#include "LightShow.h"
+#include "LightShow.hpp"
 
 void set_to_color(CRGB leds[], int startIndex, int endIndex, int r, int g, int b){
   for (int i = startIndex; i <= endIndex; i++){

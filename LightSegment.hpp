@@ -1,4 +1,4 @@
-#include "LightShow.h"
+#include "LightShow.hpp"
 
 class LightSegment{
   public: 
