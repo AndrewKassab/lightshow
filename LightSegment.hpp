@@ -11,4 +11,4 @@ class LightSegment{
     int b;
     void setToColor(int r, int g, int b);
     void turnOff();
-}
+};
