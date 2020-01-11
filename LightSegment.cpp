@@ -28,13 +28,13 @@ void LightSegment::turnOff(){
 }
 
 void LightSegment::traceOneColorFromBothEnds(int r, int g, int b, int thickness, int delayTime){
-  for (int i = startIndex; i <= endINdex - thickness + 1; i++){
+  for (int i = 0; i <= endIndex - startIndex - thickness + 1; i++){
     for (int j = 0; j < thickness; j++){
-      leds[i+j] = CRGB(r,g,b);
-      leds[endIndex-j] = CRGB(r,g,b);
+      leds[i+startIndex+j] = CRGB(r,g,b);
+      leds[endIndex-i-j] = CRGB(r,g,b);
     }
     FastLED.show();
-    leds[i] = CRGB(0,0,0);
+    leds[i+startIndex] = CRGB(0,0,0);
     leds[endIndex-i] = CRGB(0,0,0);
     delay(delayTime);
   }
