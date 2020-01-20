@@ -73,4 +73,6 @@ void set_right_bridge(CRGB leds[], int r, int g, int b);
 
 void single_trace(CRGB leds[], int startIndex, int endIndex, int thickness, int delayTime, int r, int g, int b);
 
+void trace_outwards_evenly(CRGB leds[], int startIndex, int lengthOut, int thickness, int delayTime, int r, int g, int b);
+
 #endif

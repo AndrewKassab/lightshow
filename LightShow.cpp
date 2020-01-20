@@ -89,3 +89,22 @@ void turn_all_off(CRGB leds[]){
     leds[i] = CRGB(0,0,0);
   }
 }
+
+void trace_outwards_evenly(CRGB leds[], int startIndex, int lengthOut, int thickness, int delayTime, int r, int g, int b){
+  for (int i = 0; i <= lengthOut-thickness; i++){
+    for (int j = 0; j < thickness; j++){
+      leds[startIndex+i+j] = CRGB(r,g,b);
+      leds[startIndex-i-j] = CRGB(r,g,b);
+    }
+    FastLED.show();
+    leds[startIndex+i] = CRGB(0,0,0);
+    leds[startIndex-i] = CRGB(0,0,0);
+    delay(delayTime);
+  }
+  for (int i = 0; i <= thickness; i++){
+    leds[startIndex+lengthOut-i] = CRGB(0,0,0);
+    leds[startIndex-lengthOut+i] = CRGB(0,0,0);
+  }
+  FastLED.show();
+}
+
