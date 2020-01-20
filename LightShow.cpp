@@ -101,10 +101,11 @@ void trace_outwards_evenly(CRGB leds[], int startIndex, int lengthOut, int thick
     leds[startIndex-i] = CRGB(0,0,0);
     delay(delayTime);
   }
-  for (int i = 0; i <= thickness; i++){
+  for (int i = thickness; i >= 0; i--){
     leds[startIndex+lengthOut-i] = CRGB(0,0,0);
     leds[startIndex-lengthOut+i] = CRGB(0,0,0);
     FastLED.show();
+    delay(delayTime);
   }
 }
 

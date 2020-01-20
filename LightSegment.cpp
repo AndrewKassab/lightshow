@@ -19,11 +19,8 @@ void LightSegment::setToColor(int new_r, int new_g, int new_b){
 }
 
 void LightSegment::turnOff(){
-  this-> r = 0;
-  this-> g = 0;
-  this-> b = 0;
   for (int i = startIndex; i <= endIndex; i++){
-    leds[i] = CRGB(r,g,b);
+    leds[i] = CRGB(0,0,0);
   }
 }
 
