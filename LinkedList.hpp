@@ -8,6 +8,7 @@ class LinkedList{
     Node * head;
     LinkedList(LightSegment * head);
     void add(LightSegment * newSegment);
+    void setAllToColor(int r, int g, int b);
 };
 
 #endif

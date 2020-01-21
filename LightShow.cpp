@@ -111,18 +111,11 @@ void trace_outwards_evenly(CRGB leds[], int startIndex, int lengthOut, int thick
 
 void fade_segments_in(LinkedList * segmentList, int delayTime){
   Node * currentSegmentNode = segmentList->head;
-  while (currentSegmentNode->next){
-    LightSegment * segment = currentSegmentNode->segment;
-    segment->setToColor(segment->r/15, segment->g/15, segment->b/15);
-    currentSegmentNode = currentSegmentNode->next;
-  }
-  FastLED.show();
-  delay(delayTime);
-  for (int i = 2; i <= 15; i++){
+  for (int i = 1; i <= 70; i++){
     currentSegmentNode = segmentList->head;
-    while (currentSegmentNode->next){
+    while (currentSegmentNode){
       LightSegment * segment = currentSegmentNode->segment;
-      segment->setToColor(segment->r * i, segment->g * i, segment->b * i);
+      segment->setToColorNoUpdate((segment->r/70) * i, segment->g/70 * i, segment->b/70 * i);
       currentSegmentNode = currentSegmentNode->next;
     }
     FastLED.show();

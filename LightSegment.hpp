@@ -12,6 +12,7 @@ class LightSegment{
     int g; 
     int b;
     void setToColor(int r, int g, int b);
+    void setToColorNoUpdate(int r, int g, int b);
     void turnOff();
     void traceOneColorFromBothEnds(int r, int g, int b, int thickness, int delayTime);
     CRGB * leds;
