@@ -75,4 +75,6 @@ void single_trace(CRGB leds[], int startIndex, int endIndex, int thickness, int 
 
 void trace_outwards_evenly(CRGB leds[], int startIndex, int lengthOut, int thickness, int delayTime, int r, int g, int b);
 
+/*void fade_segments_in(vector<LightSegment *> segments, int delayTime);*/
+
 #endif

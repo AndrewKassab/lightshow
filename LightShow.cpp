@@ -109,3 +109,8 @@ void trace_outwards_evenly(CRGB leds[], int startIndex, int lengthOut, int thick
   }
 }
 
+/*void fade_segments_in(vector<LightSegment *> segments, int delayTime){
+  for (int i = 0; i <= 10; i++){
+    for (LightSegment * segment: segments)
+  }
+}*/
