@@ -6,7 +6,8 @@
 class LinkedList{
   public:
     Node * head;
-    LinkedList(Node * head);
+    LinkedList(LightSegment * head);
+    void add(LightSegment * newSegment);
 };
 
 #endif
