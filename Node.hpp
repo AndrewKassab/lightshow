@@ -6,7 +6,7 @@
 class Node{
   public: 
     LightSegment * segment;
-    LightSegment * next;
+    Node * next;
     Node(LightSegment* segment);
 };
 
