@@ -103,4 +103,7 @@ void get_right_bridge_no_slant(CRGB* leds);
 
 void get_all_lights(CRGB* leds);
 
+void get_start_left_bridge_to_middle_top_left(CRGB* leds);
+void get_middle_top_right_to_right_bridge_end(CRGB* leds);
+
 #endif
