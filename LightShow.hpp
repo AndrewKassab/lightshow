@@ -26,6 +26,27 @@
 #define start 1
 #define end 260
 
+LightSegment * leftSquare;
+LightSegment * leftSquareLeft;
+LightSegment * leftSquareTop;
+LightSegment * leftSquareRight;
+LightSegment * leftSquareBottom;
+LightSegment * rightSquare;
+LightSegment * rightSquareTop;
+LightSegment * rightSquareRight;
+LightSegment * rightSquareLeft;
+LightSegment * rightSquareBottom;
+LightSegment * middleTop; 
+LightSegment * middleLeft;
+LightSegment * middleRight;
+LightSegment * middleTopLeft;
+LightSegment * middleTopRight;
+LightSegment * rightBridge;
+LightSegment * leftBridge;
+LightSegment * allLights;
+LightSegment * startLeftBridgeToMiddleTopLeft;
+LightSegment * middleTopRightToRightBridgeEnd;
+
 void set_to_color(CRGB leds[], int startIndex, int endIndex, int r, int g, int b);
 
 void set_one_to_color(CRGB leds[], int index, int r, int g, int b);
@@ -105,5 +126,10 @@ void get_all_lights(CRGB* leds);
 
 void get_start_left_bridge_to_middle_top_left(CRGB* leds);
 void get_middle_top_right_to_right_bridge_end(CRGB* leds);
+
+void get_left_square_left_center_with_thickness(CRGB* leds, int thickness);
+void get_left_square_top_center_with_thickness(CRGB* leds, int thickness);
+void get_left_square_right_center_with_thickness(CRGB* leds, int thickness);
+void get_left_square_bottom_center_with_thickness(CRGB* leds, int thickness);
 
 #endif
