@@ -127,9 +127,21 @@ void get_all_lights(CRGB* leds);
 void get_start_left_bridge_to_middle_top_left(CRGB* leds);
 void get_middle_top_right_to_right_bridge_end(CRGB* leds);
 
-void get_left_square_left_center_with_thickness(CRGB* leds, int thickness);
-void get_left_square_top_center_with_thickness(CRGB* leds, int thickness);
-void get_left_square_right_center_with_thickness(CRGB* leds, int thickness);
-void get_left_square_bottom_center_with_thickness(CRGB* leds, int thickness);
+void get_left_square_left_center_with_offset(CRGB* leds, int offset);
+void get_left_square_top_center_with_offset(CRGB* leds, int offset);
+void get_left_square_right_center_with_offset(CRGB* leds, int offset);
+void get_left_square_bottom_center_with_offset(CRGB* leds, int offset);
+
+void get_right_square_left_center_with_offset(CRGB* leds, int offset);
+void get_right_square_top_center_with_offset(CRGB* leds, int offset);
+void get_right_square_right_center_with_offset(CRGB* leds, int offset);
+void get_right_square_bottom_center_with_offset(CRGB* leds, int offset);
+
+void get_middle_left_center_with_offset(CRGB* leds, int offset);
+void get_middle_right_center_with_offset(CRGB* leds, int offset);
+
+void get_middle_top_center_with_offset(CRGB* leds, int offset);
+void get_middle_top_left_center_with_offset(CRGB* leds, int offset);
+void get_middle_top_right_center_with_offset(CRGB* leds, int offset);
 
 #endif

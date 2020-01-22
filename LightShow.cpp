@@ -188,3 +188,46 @@ void get_start_left_bridge_to_middle_top_left(CRGB* leds){
 void get_middle_top_right_to_right_bridge_end(CRGB* leds){
   return new LightSegment(leds, middle_top_right_corner, right_bottom_left_corner);
 }
+
+void get_left_square_left_center_with_offset(CRGB* leds, int offset){
+  return new LightSegment(leds, left_top_left_corner + offset, left_bottom_left_corner - offset);
+}
+void get_left_square_top_center_with_offset(CRGB* leds, int offset){
+  return new LightSegment(leds, left_top_right_corner + offset, left_top_left_corner - offset); 
+}
+void get_left_square_right_center_with_offset(CRGB* leds, int offset){
+  return new LightSegment(leds, start + offset, left_top_right_corner - offset); 
+}
+void get_left_square_bottom_center_with_offset(CRGB* leds, int offset){
+  return new LightSegment(leds, left_bottom_left_corner+offset, left_bottom_right_corner-offset); 
+}
+
+void get_right_square_left_center_with_offset(CRGB* leds, int offset){
+  return new LightSegment(leds, right_top_left_corner + offset, end - offset);
+}
+void get_right_square_top_center_with_offset(CRGB* leds, int offset){
+  return new LightSegment(leds, right_top_right_corner + offset, right_top_left_corner - offset);
+}
+void get_right_square_right_center_with_offset(CRGB* leds, int offset){
+  return new LightSegment(leds, right_bottom_right_corner + offset, right_top_right_corner - offset);
+}
+void get_right_square_bottom_center_with_offset(CRGB* leds, int offset){
+  return new LightSegment(leds, right_bottom_left_corner + offset, right_bottom_right_corner - offset);
+}
+
+void get_middle_left_center_with_offset(CRGB* leds, int offset){
+  return new LightSegment(leds, middle_bottom_left_corner + offset, middle_top_left_corner - offset);
+}
+void get_middle_right_center_with_offset(CRGB* leds, int offset){
+  return new LightSegment(leds, middle_top_right_corner + offset, middle_bottom_right_corner - offset); 
+}
+
+void get_middle_top_center_with_offset(CRGB* leds, int offset){
+  return new LightSegment(leds, middle_top_left_corner + offset, middle_top_right_corner - offset); 
+}
+void get_middle_top_left_center_with_offset(CRGB* leds, int offset){
+  return new LightSegment(leds, middle_top_left_corner + offset, middle_top_middle - offset); 
+}
+void get_middle_top_right_center_with_offset(CRGB* leds, int offset){
+  return new LightSegment(leds, middle_top_middle + offset, middle_top_right_corner - offset); 
+}
