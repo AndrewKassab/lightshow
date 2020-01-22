@@ -7,6 +7,7 @@ LightSegment::LightSegment(CRGB * leds, int startIndex, int endIndex){
   this->leds = leds;
   this->startIndex = startIndex;
   this->endIndex = endIndex;
+  this->next = NULL;
 } 
 
 void LightSegment::setToColor(int new_r, int new_g, int new_b){

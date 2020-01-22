@@ -76,4 +76,31 @@ void single_trace(CRGB leds[], int startIndex, int endIndex, int thickness, int 
 
 void trace_outwards_evenly(CRGB leds[], int startIndex, int lengthOut, int thickness, int delayTime, int r, int g, int b);
 
+// construct new LightSegments that are typically used
+void get_left_square(CRGB* leds);
+void get_left_square_left(CRGB* leds);
+void get_left_square_right(CRGB* leds);
+void get_left_square_top(CRGB* leds);
+void get_left_square_bottom(CRGB* leds);
+
+void get_right_square(CRGB* leds);
+void get_right_square_left(CRGB* leds);
+void get_right_square_right(CRGB* leds);
+void get_right_square_top(CRGB* leds);
+void get_right_square_bottom(CRGB* leds);
+
+void get_middle_arch(CRGB* leds);
+void get_middle_top(CRGB* leds);
+void get_middle_left(CRGB* leds);
+void get_middle_right(CRGB* leds);
+void get_middle_top_left(CRGB* leds);
+void get_middle_top_right(CRGB* leds);
+
+void get_left_bridge(CRGB* leds);
+void get_right_bridge(CRGB* leds);
+void get_left_bridge_no_slant(CRGB* leds);
+void get_right_bridge_no_slant(CRGB* leds);
+
+void get_all_lights(CRGB* leds);
+
 #endif
