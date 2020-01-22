@@ -20,3 +20,11 @@ void LinkedList::setAllToColor(int r, int g, int b){
     currentSegment = currentSegment->next;
   }
 }
+
+void LinkedList::turnAllOff(){
+  Node * currentSegment = this->head;
+  while (currentSegment){
+    currentSegment->segment->turnOff();
+    currentSegment = currentSegment->next;
+  }
+}

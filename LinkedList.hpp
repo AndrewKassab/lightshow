@@ -9,6 +9,7 @@ class LinkedList{
     LinkedList(LightSegment * head);
     void add(LightSegment * newSegment);
     void setAllToColor(int r, int g, int b);
+    void turnAllOff();
 };
 
 #endif
