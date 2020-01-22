@@ -2,6 +2,7 @@
 #define LIST 
 
 #include "Node.hpp"
+#include "LightShow.hpp"
 
 class LinkedList{
   public:
@@ -10,6 +11,7 @@ class LinkedList{
     void add(LightSegment * newSegment);
     void setAllToColor(int r, int g, int b);
     void turnAllOff();
+    void fadeAllIn(int delayTime);
 };
 
 #endif
