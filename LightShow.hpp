@@ -27,27 +27,6 @@
 #define start 1
 #define end 260
 
-LightSegment * leftSquare;
-LightSegment * leftSquareLeft;
-LightSegment * leftSquareTop;
-LightSegment * leftSquareRight;
-LightSegment * leftSquareBottom;
-LightSegment * rightSquare;
-LightSegment * rightSquareTop;
-LightSegment * rightSquareRight;
-LightSegment * rightSquareLeft;
-LightSegment * rightSquareBottom;
-LightSegment * middleTop; 
-LightSegment * middleLeft;
-LightSegment * middleRight;
-LightSegment * middleTopLeft;
-LightSegment * middleTopRight;
-LightSegment * rightBridge;
-LightSegment * leftBridge;
-LightSegment * allLights;
-LightSegment * startLeftBridgeToMiddleTopLeft;
-LightSegment * middleTopRightToRightBridgeEnd;
-
 void set_to_color(CRGB leds[], int startIndex, int endIndex, Color color);
 
 void set_one_to_color(CRGB leds[], int index, Color color); 
@@ -57,8 +36,6 @@ void turn_off(CRGB leds[], int startIndex, int endIndex);
 void turn_one_off(CRGB leds[], int index);
 
 void turn_all_off(CRGB leds[]);
-
-void countdown(CRGB leds[]);
 
 void light_all_corners(CRGB leds[], Color color);
 

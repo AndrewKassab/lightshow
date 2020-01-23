@@ -18,7 +18,7 @@ void LinkedList::add(LightSegment * newSegment){
 void LinkedList::setAllToColor(Color color){
   Node * currentSegment = this->head;
   while (currentSegment){
-    currentSegment->segment->setToColor(color.r,color.g,color.b);
+    currentSegment->segment->setToColor(color);
     currentSegment = currentSegment->next;
   }
 }
@@ -37,7 +37,8 @@ void LinkedList::fadeAllIn(int delayTime){
     currentSegmentNode = this->head;
     while (currentSegmentNode){
       LightSegment * segment = currentSegmentNode->segment;
-      segment->setToColorNoUpdate((segment->r/70) * i, segment->g/70 * i, segment->b/70 * i);
+      Color newColor = { (segment->r/70) * i, (segment->g/70) * i, (segment->b/70) * i };
+      segment->setToColorNoUpdate(newColor);
       currentSegmentNode = currentSegmentNode->next;
     }
     FastLED.show();
@@ -51,7 +52,8 @@ void LinkedList::fadeAllDown(int delayTime){
     currentSegmentNode = this->head;
     while (currentSegmentNode){
       LightSegment * segment = currentSegmentNode->segment;
-      segment->setToColorNoUpdate(segment->r - ((segment->r/70) * i), segment->g - ((segment->g/70) * i), segment->b - ((segment->b/70) * i));
+      Color newColor = { segment->r - ((segment->r/70) * i), segment->g - ((segment->g/70) * i), segment->b - ((segment->b/70) * i)};
+      segment->setToColorNoUpdate(newColor);
       currentSegmentNode = currentSegmentNode->next;
     }
     FastLED.show();
