@@ -10,19 +10,25 @@ LightSegment::LightSegment(CRGB * leds, int startIndex, int endIndex){
   this->next = NULL;
 } 
 
-void LightSegment::setToColor(int new_r, int new_g, int new_b){
-  this->r = new_r; 
-  this->g = new_g;
-  this->b = new_b;
+void LightSegment::setToColor(Color theColor){
+  this->r = theColor.r;
+  this->g = theColor.g;
+  this->b = theColor.b;
   for (int i = startIndex; i <= endIndex; i++){
-    leds[i] = CRGB(r,g,b);
+    leds[i] = CRGB(theColor.r,theColor.g,theColor.b);
   }
 }
 
-void LightSegment::setToColorNoUpdate(int new_r, int new_g, int new_b){
+void LightSegment::setToColorNoUpdate(Color theColor){
   for (int i = startIndex; i <= endIndex; i++){
-    leds[i] = CRGB(new_r,new_g,new_b);
+    leds[i] = CRGB(theColor.r,theColor.g,theColor.b);
   }
+}
+
+void LightSegment::setColorFieldsOnly(Color color){
+  this->r = color.r;
+  this->g = color.g;
+  this->b = color.b;
 }
 
 void LightSegment::turnOff(){
@@ -31,11 +37,11 @@ void LightSegment::turnOff(){
   }
 }
 
-void LightSegment::traceOneColorFromBothEnds(int r, int g, int b, int thickness, int delayTime){
+void LightSegment::traceOneColorFromBothEnds(int thickness, int delayTime){
   for (int i = 0; i <= endIndex - startIndex - thickness + 1; i++){
     for (int j = 0; j < thickness; j++){
-      leds[i+startIndex+j] = CRGB(r,g,b);
-      leds[endIndex-i-j] = CRGB(r,g,b);
+      leds[i+startIndex+j] = CRGB(this->r,this->g,this->b);
+      leds[endIndex-i-j] = CRGB(this->r,this->g,this->b);
     }
     FastLED.show();
     leds[i+startIndex] = CRGB(0,0,0);

@@ -1,13 +1,13 @@
 #include "LightShow.hpp"
 
-void set_to_color(CRGB leds[], int startIndex, int endIndex, int r, int g, int b){
+void set_to_color(CRGB leds[], int startIndex, int endIndex, Color color){ 
   for (int i = startIndex; i <= endIndex; i++){
-    leds[i] = CRGB(r,g,b);
+    leds[i] = CRGB( color.r, color.g, color.b);
   }
 }
 
-void set_one_to_color(CRGB leds[], int index, int r, int g, int b){
-  leds[index] = CRGB(r,g,b);
+void set_one_to_color(CRGB leds[], int index, Color color){
+  leds[index] = CRGB(color.r, color.g, color.b);
 }
 
 void turn_off(CRGB leds[], int startIndex, int endIndex){
@@ -35,20 +35,20 @@ void countdown(CRGB leds[]){
   }
 }
 
-void light_all_corners(CRGB leds[], int r, int g, int b){
-  leds[left_top_left_corner] = CRGB(r,g,b);
-  leds[left_top_right_corner] = CRGB(r,g,b);
-  leds[left_bottom_left_corner] = CRGB(r,g,b);
-  leds[left_bottom_right_corner] = CRGB(r,g,b);
-  leds[middle_bottom_left_corner] = CRGB(r,g,b);
-  leds[middle_bottom_right_corner] = CRGB(r,g,b);
-  leds[middle_top_left_corner] = CRGB(r,g,b);
-  leds[middle_top_middle] = CRGB(r,g,b);
-  leds[middle_top_right_corner] = CRGB(r,g,b);
-  leds[right_bottom_right_corner] = CRGB(r,g,b);
-  leds[right_bottom_left_corner] = CRGB(r,g,b);
-  leds[right_top_right_corner] = CRGB(r,g,b);
-  leds[right_top_left_corner] = CRGB(r,g,b);
+void light_all_corners(CRGB leds[], Color color){
+  leds[left_top_left_corner] = CRGB(color.r,color.g,color.b);
+  leds[left_top_right_corner] = CRGB(color.r,color.g,color.b);
+  leds[left_bottom_left_corner] = CRGB(color.r,color.g,color.b);
+  leds[left_bottom_right_corner] = CRGB(color.r,color.g,color.b);
+  leds[middle_bottom_left_corner] = CRGB(color.r,color.g,color.b);
+  leds[middle_bottom_right_corner] = CRGB(color.r,color.g,color.b);
+  leds[middle_top_left_corner] = CRGB(color.r,color.g,color.b);
+  leds[middle_top_middle] = CRGB(color.r,color.g,color.b);
+  leds[middle_top_right_corner] = CRGB(color.r,color.g,color.b);
+  leds[right_bottom_right_corner] = CRGB(color.r,color.g,color.b);
+  leds[right_bottom_left_corner] = CRGB(color.r,color.g,color.b);
+  leds[right_top_right_corner] = CRGB(color.r,color.g,color.b);
+  leds[right_top_left_corner] = CRGB(color.r,color.g,color.b);
 }
 
 void turn_off_all_corners(CRGB leds[]){ 
@@ -67,34 +67,17 @@ void turn_off_all_corners(CRGB leds[]){
   leds[right_top_left_corner] = CRGB(0,0,0);
 }
 
-void single_trace(CRGB leds[], int startIndex, int endIndex, int thickness, int delayTime, int r, int g, int b){
-  // trace
-  for (int i = startIndex; i <= endIndex - thickness + 1; i++){
-    for (int j = 0; j < thickness; j++){
-      leds[i+j] = CRGB(r,g,b); 
-    }
-    FastLED.show();
-    leds[i] = CRGB(0,0,0);
-    delay(delayTime);
-  }
-  // make sure last few turn off
-  for (int i = 0; i <= thickness; i++){
-    leds[endIndex-i] = CRGB(0,0,0);
-  }
-  FastLED.show();
-}
-
 void turn_all_off(CRGB leds[]){
   for (int i = start; i <= end; i++){
     leds[i] = CRGB(0,0,0);
   }
 }
 
-void trace_outwards_evenly(CRGB leds[], int startIndex, int lengthOut, int thickness, int delayTime, int r, int g, int b){
+void trace_outwards_evenly(CRGB leds[], int startIndex, int lengthOut, int thickness, int delayTime, Color color){ 
   for (int i = 0; i <= lengthOut-thickness; i++){
     for (int j = 0; j < thickness; j++){
-      leds[startIndex+i+j] = CRGB(r,g,b);
-      leds[startIndex-i-j] = CRGB(r,g,b);
+      leds[startIndex+i+j] = CRGB(color.r,color.g,color.b);
+      leds[startIndex-i-j] = CRGB(color.r,color.g,color.b);
     }
     FastLED.show();
     leds[startIndex+i] = CRGB(0,0,0);

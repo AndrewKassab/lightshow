@@ -4,6 +4,7 @@
 #include <FastLED.h> 
 #include "LightSegment.hpp"
 #include "LinkedList.hpp"
+#include "color.h"
 
 #define NUM_LEDS 262
 
@@ -47,9 +48,9 @@ LightSegment * allLights;
 LightSegment * startLeftBridgeToMiddleTopLeft;
 LightSegment * middleTopRightToRightBridgeEnd;
 
-void set_to_color(CRGB leds[], int startIndex, int endIndex, int r, int g, int b);
+void set_to_color(CRGB leds[], int startIndex, int endIndex, Color color);
 
-void set_one_to_color(CRGB leds[], int index, int r, int g, int b);
+void set_one_to_color(CRGB leds[], int index, Color color); 
 
 void turn_off(CRGB leds[], int startIndex, int endIndex);
 
@@ -59,43 +60,13 @@ void turn_all_off(CRGB leds[]);
 
 void countdown(CRGB leds[]);
 
-void light_all_corners(CRGB leds[], int r, int g, int b);
+void light_all_corners(CRGB leds[], Color color);
 
 void turn_off_all_corners(CRGB leds[]);
 
 void default_setup(CRGB leds[]);
 
-void set_left_square_left(CRGB leds[], int r, int g, int b);
-
-void set_left_square_right(CRGB leds[], int r, int g, int b);
-
-void set_left_square_bottom(CRGB leds[], int r, int g, int b);
-
-void set_left_square_top(CRGB leds[], int r, int g, int b);
-
-void set_right_square_left(CRGB leds[], int r, int g, int b);
-
-void set_right_square_right(CRGB leds[], int r, int g, int b);
-
-void set_right_square_bottom(CRGB leds[], int r, int g, int b);
-
-void set_right_square_top(CRGB leds[], int r, int g, int b);
-
-void set_middle_left(CRGB leds[], int r, int g, int b);
-
-void set_middle_top_left(CRGB leds[], int r, int g, int b);
-
-void set_middle_top_right(CRGB leds[], int r, int g, int b);
-
-void set_middle_middle(CRGB leds[], int r, int g, int b);
-
-void set_left_bridge(CRGB leds[], int r, int g, int b);
-
-void set_right_bridge(CRGB leds[], int r, int g, int b);
-
-void single_trace(CRGB leds[], int startIndex, int endIndex, int thickness, int delayTime, int r, int g, int b);
-
-void trace_outwards_evenly(CRGB leds[], int startIndex, int lengthOut, int thickness, int delayTime, int r, int g, int b);
+void trace_outwards_evenly(CRGB leds[], int startIndex, int lengthOut, int thickness, int delayTime, Color color);
 
 // construct new LightSegments that are typically used
 void get_left_square(CRGB* leds);

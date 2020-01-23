@@ -15,10 +15,10 @@ void LinkedList::add(LightSegment * newSegment){
   this->size++;
 }
 
-void LinkedList::setAllToColor(int r, int g, int b){
+void LinkedList::setAllToColor(Color color){
   Node * currentSegment = this->head;
   while (currentSegment){
-    currentSegment->segment->setToColor(r,g,b);
+    currentSegment->segment->setToColor(color.r,color.g,color.b);
     currentSegment = currentSegment->next;
   }
 }

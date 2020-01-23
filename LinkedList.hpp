@@ -10,7 +10,7 @@ class LinkedList{
     int size;
     LinkedList(LightSegment * head);
     void add(LightSegment * newSegment);
-    void setAllToColor(int r, int g, int b);
+    void setAllToColor(Color color);
     void turnAllOff();
 
     // lights fade in towards their rgb values 
