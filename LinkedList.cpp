@@ -6,6 +6,16 @@ LinkedList::LinkedList(LightSegment * head){
   this->size = 1;
 }
 
+LinkedList::~LinkedList(){
+  Node * currentSegment = this->head;
+  while (currentSegment->next){
+    Node * previousSegment = currentSegment;
+    currentSegment = currentSegment->next;
+    free(previousSegment);
+  }
+  free(currentSegment);
+}
+
 void LinkedList::add(LightSegment * newSegment){
   Node * currentSegment = this->head;
   while (currentSegment->next){
@@ -29,7 +39,6 @@ void LinkedList::turnAllOff(){
     currentSegment = currentSegment->next;
   }
 }
-
 
 void LinkedList::fadeAllIn(int delayTime){
   Node * currentSegmentNode = this->head;
