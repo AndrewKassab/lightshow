@@ -92,4 +92,6 @@ LightSegment * get_middle_top_center_with_offset(CRGB* leds, int offset);
 LightSegment * get_middle_top_left_center_with_offset(CRGB* leds, int offset);
 LightSegment * get_middle_top_right_center_with_offset(CRGB* leds, int offset);
 
+/* SEQEUNCES */
+void sequence_one(int delayTime, Color colorOne, Color colorTwo);
 #endif
