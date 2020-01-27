@@ -155,20 +155,20 @@ LightSegment * get_all_lights(CRGB* leds){
 }
 
 LightSegment * get_start_left_bridge_to_middle_top_left(CRGB* leds){
-  return new LightSegment(leds, left_bottom_right_corner, middle_top_left_corner);
+  return new LightSegment(leds, left_bottom_right_corner + 1, middle_top_left_corner);
 }
 LightSegment * get_middle_top_right_to_right_bridge_end(CRGB* leds){
-  return new LightSegment(leds, middle_top_right_corner, right_bottom_left_corner);
+  return new LightSegment(leds, middle_top_right_corner, right_bottom_left_corner-3);
 }
 
 LightSegment * get_left_square_left_center_with_offset(CRGB* leds, int offset){
-  return new LightSegment(leds, left_top_left_corner + offset, left_bottom_left_corner - offset);
+  return new LightSegment(leds, left_top_left_corner + offset, left_bottom_left_corner - offset - 1);
 }
 LightSegment * get_left_square_top_center_with_offset(CRGB* leds, int offset){
   return new LightSegment(leds, left_top_right_corner + offset, left_top_left_corner - offset); 
 }
 LightSegment * get_left_square_right_center_with_offset(CRGB* leds, int offset){
-  return new LightSegment(leds, start + offset, left_top_right_corner - offset); 
+  return new LightSegment(leds, 0 + offset, left_top_right_corner - offset - 1); 
 }
 LightSegment * get_left_square_bottom_center_with_offset(CRGB* leds, int offset){
   return new LightSegment(leds, left_bottom_left_corner+offset, left_bottom_right_corner-offset); 
@@ -181,7 +181,7 @@ LightSegment * get_right_square_top_center_with_offset(CRGB* leds, int offset){
   return new LightSegment(leds, right_top_right_corner + offset, right_top_left_corner - offset);
 }
 LightSegment * get_right_square_right_center_with_offset(CRGB* leds, int offset){
-  return new LightSegment(leds, right_bottom_right_corner + offset, right_top_right_corner - offset);
+  return new LightSegment(leds, right_bottom_right_corner + offset, right_top_right_corner - offset-1);
 }
 LightSegment * get_right_square_bottom_center_with_offset(CRGB* leds, int offset){
   return new LightSegment(leds, right_bottom_left_corner + offset, right_bottom_right_corner - offset);
