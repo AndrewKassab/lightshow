@@ -3,11 +3,11 @@
 
 #include "LightSegment.hpp"
 
-class Node{
+class SegmentNode{
   public: 
     LightSegment * segment;
-    Node * next;
-    Node(LightSegment* segment);
+    SegmentNode * next;
+    SegmentNode(LightSegment* segment);
 };
 
 #endif

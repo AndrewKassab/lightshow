@@ -1,69 +1,69 @@
-#include "LinkedList.hpp"
+#include "SegmentList.hpp"
 
-LinkedList::LinkedList(LightSegment * head){
-  Node * newNode = new Node(head);
-  this->head = newNode;
+SegmentList::SegmentList(LightSegment * head){
+  SegmentNode * newSegmentNode = new SegmentNode(head);
+  this->head = newSegmentNode;
   this->size = 1;
 }
 
-LinkedList::~LinkedList(){
-  Node * currentSegment = this->head;
+SegmentList::~SegmentList(){
+  SegmentNode * currentSegment = this->head;
   while (currentSegment->next){
-    Node * previousSegment = currentSegment;
+    SegmentNode * previousSegment = currentSegment;
     currentSegment = currentSegment->next;
     free(previousSegment);
   }
   free(currentSegment);
 }
 
-void LinkedList::add(LightSegment * newSegment){
-  Node * currentSegment = this->head;
+void SegmentList::add(LightSegment * newSegment){
+  SegmentNode * currentSegment = this->head;
   while (currentSegment->next){
     currentSegment = currentSegment->next;
   }
-  currentSegment->next = new Node(newSegment);
+  currentSegment->next = new SegmentNode(newSegment);
   this->size++;
 }
 
-void LinkedList::setAllToColor(Color color){
-  Node * currentSegment = this->head;
+void SegmentList::setAllToColor(Color color){
+  SegmentNode * currentSegment = this->head;
   while (currentSegment){
     currentSegment->segment->setToColor(color);
     currentSegment = currentSegment->next;
   }
 }
-void LinkedList::turnAllOff(){
-  Node * currentSegment = this->head;
+void SegmentList::turnAllOff(){
+  SegmentNode * currentSegment = this->head;
   while (currentSegment){
     currentSegment->segment->turnOff();
     currentSegment = currentSegment->next;
   }
 }
 
-void LinkedList::fadeAllIn(int delayTime){
-  Node * currentSegmentNode = this->head;
+void SegmentList::fadeAllIn(int delayTime){
+  SegmentNode * currentSegmentSegmentNode = this->head;
   for (int i = 1; i <= 70; i++){
-    currentSegmentNode = this->head;
-    while (currentSegmentNode){
-      LightSegment * segment = currentSegmentNode->segment;
+    currentSegmentSegmentNode = this->head;
+    while (currentSegmentSegmentNode){
+      LightSegment * segment = currentSegmentSegmentNode->segment;
       Color newColor = { (segment->r/70) * i, (segment->g/70) * i, (segment->b/70) * i };
       segment->setToColorNoUpdate(newColor);
-      currentSegmentNode = currentSegmentNode->next;
+      currentSegmentSegmentNode = currentSegmentSegmentNode->next;
     }
     FastLED.show();
     delay(delayTime);
   }
 }
 
-void LinkedList::fadeAllDown(int delayTime){
-  Node * currentSegmentNode;
+void SegmentList::fadeAllDown(int delayTime){
+  SegmentNode * currentSegmentSegmentNode;
   for (int i = 1; i <= 70; i++){
-    currentSegmentNode = this->head;
-    while (currentSegmentNode){
-      LightSegment * segment = currentSegmentNode->segment;
+    currentSegmentSegmentNode = this->head;
+    while (currentSegmentSegmentNode){
+      LightSegment * segment = currentSegmentSegmentNode->segment;
       Color newColor = { segment->r - ((segment->r/70) * i), segment->g - ((segment->g/70) * i), segment->b - ((segment->b/70) * i)};
       segment->setToColorNoUpdate(newColor);
-      currentSegmentNode = currentSegmentNode->next;
+      currentSegmentSegmentNode = currentSegmentSegmentNode->next;
     }
     FastLED.show();
     delay(delayTime);
@@ -72,9 +72,9 @@ void LinkedList::fadeAllDown(int delayTime){
 }
 
 // each segment must be equal in length
-void LinkedList::traceAll(int thickness, int delayTime, boolean * reverse){
+void SegmentList::traceAll(int thickness, int delayTime, boolean * reverse){
   for (int i = 0; i < this->head->segment->endIndex - this->head->segment->startIndex - thickness + 2; i++){
-    Node * currentSegment = this->head;
+    SegmentNode * currentSegment = this->head;
     int segIndex = 0;
     while (currentSegment){
       LightSegment * segment = currentSegment->segment;

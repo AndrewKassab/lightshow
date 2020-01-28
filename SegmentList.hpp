@@ -1,15 +1,15 @@
 #ifndef LIST
 #define LIST 
 
-#include "Node.hpp"
+#include "SegmentNode.hpp"
 #include "LightShow.hpp"
 
-class LinkedList{
+class SegmentList{
   public:
-    Node * head;
+    SegmentNode * head;
     int size;
-    LinkedList(LightSegment * head);
-    ~LinkedList();
+    SegmentList(LightSegment * head);
+    ~SegmentList();
     void add(LightSegment * newSegment);
     void setAllToColor(Color color);
     void turnAllOff();
