@@ -31,7 +31,7 @@ void LightSegment::traceOneColorFromBothEnds(int thickness, int delayTime, CRGB 
   for (int i = 0; i <= thickness; i++){
     leds[size-i] = CRGB::Black;
   }
-  for (int i = startIndex; i <= thickness; i++){
+  for (int i = 0; i <= thickness; i++){
     leds[i] = CRGB::Black;
   }
   FastLED.show();
