@@ -1,13 +1,13 @@
 #include "LightShow.hpp"
 
-void set_to_color(CRGB leds[], int startIndex, int endIndex, Color color){ 
+void set_to_color(CRGB leds[], int startIndex, int endIndex, CRGB color){ 
   for (int i = startIndex; i <= endIndex; i++){
-    leds[i] = CRGB( color.r, color.g, color.b);
+    leds[i] = color;
   }
 }
 
-void set_one_to_color(CRGB leds[], int index, Color color){
-  leds[index] = CRGB(color.r, color.g, color.b);
+void set_one_to_color(CRGB leds[], int index, CRGB color){
+  leds[index] = color;
 }
 
 void turn_off(CRGB leds[], int startIndex, int endIndex){
@@ -24,20 +24,20 @@ void default_setup(CRGB leds[]){
   FastLED.addLeds<WS2812, 2, GRB>(leds, 262);
 }
 
-void light_all_corners(CRGB leds[], Color color){
-  leds[left_top_left_corner] = CRGB(color.r,color.g,color.b);
-  leds[left_top_right_corner] = CRGB(color.r,color.g,color.b);
-  leds[left_bottom_left_corner] = CRGB(color.r,color.g,color.b);
-  leds[left_bottom_right_corner] = CRGB(color.r,color.g,color.b);
-  leds[middle_bottom_left_corner] = CRGB(color.r,color.g,color.b);
-  leds[middle_bottom_right_corner] = CRGB(color.r,color.g,color.b);
-  leds[middle_top_left_corner] = CRGB(color.r,color.g,color.b);
-  leds[middle_top_middle] = CRGB(color.r,color.g,color.b);
-  leds[middle_top_right_corner] = CRGB(color.r,color.g,color.b);
-  leds[right_bottom_right_corner] = CRGB(color.r,color.g,color.b);
-  leds[right_bottom_left_corner] = CRGB(color.r,color.g,color.b);
-  leds[right_top_right_corner] = CRGB(color.r,color.g,color.b);
-  leds[right_top_left_corner] = CRGB(color.r,color.g,color.b);
+void light_all_corners(CRGB leds[], CRGB color){
+  leds[left_top_left_corner] = color;
+  leds[left_top_right_corner] = color;
+  leds[left_bottom_left_corner] = color;
+  leds[left_bottom_right_corner] = color;
+  leds[middle_bottom_left_corner] = color;
+  leds[middle_bottom_right_corner] = color;
+  leds[middle_top_left_corner] = color;
+  leds[middle_top_middle] = color;
+  leds[middle_top_right_corner] = color;
+  leds[right_bottom_right_corner] = color;
+  leds[right_bottom_left_corner] = color;
+  leds[right_top_right_corner] = color;
+  leds[right_top_left_corner] = color;
 }
 
 void turn_off_all_corners(CRGB leds[]){ 
@@ -62,11 +62,11 @@ void turn_all_off(CRGB leds[]){
   }
 }
 
-void trace_outwards_evenly(CRGB leds[], int startIndex, int lengthOut, int thickness, int delayTime, Color color){ 
+void trace_outwards_evenly(CRGB leds[], int startIndex, int lengthOut, int thickness, int delayTime, CRGB color){ 
   for (int i = 0; i <= lengthOut-thickness; i++){
     for (int j = 0; j < thickness; j++){
-      leds[startIndex+i+j] = CRGB(color.r,color.g,color.b);
-      leds[startIndex-i-j] = CRGB(color.r,color.g,color.b);
+      leds[startIndex+i+j] = color;
+      leds[startIndex-i-j] = color;
     }
     FastLED.show();
     leds[startIndex+i] = CRGB(0,0,0);

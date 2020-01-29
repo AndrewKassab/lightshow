@@ -10,22 +10,22 @@ LightSegment::LightSegment(CRGB * leds, int startIndex, int endIndex){
   this->next = NULL;
 } 
 
-void LightSegment::setToColor(Color theColor){
-  this->r = theColor.r;
-  this->g = theColor.g;
-  this->b = theColor.b;
+void LightSegment::setToColor(CRGB color){
+  this->r = color.r;
+  this->g = color.g;
+  this->b = color.b;
   for (int i = startIndex; i <= endIndex; i++){
-    leds[i] = CRGB(theColor.r,theColor.g,theColor.b);
+    leds[i] = color;
   }
 }
 
-void LightSegment::setToColorNoUpdate(Color theColor){
+void LightSegment::setToColorNoUpdate(CRGB color){
   for (int i = startIndex; i <= endIndex; i++){
-    leds[i] = CRGB(theColor.r,theColor.g,theColor.b);
+    leds[i] = color;
   }
 }
 
-void LightSegment::setColorFieldsOnly(Color color){
+void LightSegment::setColorFieldsOnly(CRGB color){
   this->r = color.r;
   this->g = color.g;
   this->b = color.b;

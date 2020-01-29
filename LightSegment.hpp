@@ -2,7 +2,6 @@
 #define LIGHTSEGMENT 
 
 #include <FastLED.h>
-#include "color.h"
 
 class LightSegment{
   public: 
@@ -13,11 +12,11 @@ class LightSegment{
     int r;
     int g; 
     int b;
-    void setToColor(Color theColor);
+    void setToColor(CRGB color);
     // sets the leds to rgb value without changing state variables
-    void setToColorNoUpdate(Color theColor);
+    void setToColorNoUpdate(CRGB color);
     // sets just the inner variables but not the leds
-    void setColorFieldsOnly(Color color);
+    void setColorFieldsOnly(CRGB color);
     void turnOff();
     void traceOneColorFromBothEnds(int thickness, int delayTime);
     CRGB * leds;

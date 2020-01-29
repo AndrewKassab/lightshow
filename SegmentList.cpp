@@ -25,7 +25,7 @@ void SegmentList::add(LightSegment * newSegment){
   this->size++;
 }
 
-void SegmentList::setAllToColor(Color color){
+void SegmentList::setAllToColor(CRGB color){
   SegmentNode * currentSegment = this->head;
   while (currentSegment){
     currentSegment->segment->setToColor(color);
@@ -46,7 +46,7 @@ void SegmentList::fadeAllIn(int delayTime){
     currentSegmentSegmentNode = this->head;
     while (currentSegmentSegmentNode){
       LightSegment * segment = currentSegmentSegmentNode->segment;
-      Color newColor = { (segment->r/70) * i, (segment->g/70) * i, (segment->b/70) * i };
+      CRGB newColor = CRGB( (segment->r/70) * i, (segment->g/70) * i, (segment->b/70) * i );
       segment->setToColorNoUpdate(newColor);
       currentSegmentSegmentNode = currentSegmentSegmentNode->next;
     }
@@ -61,7 +61,7 @@ void SegmentList::fadeAllDown(int delayTime){
     currentSegmentSegmentNode = this->head;
     while (currentSegmentSegmentNode){
       LightSegment * segment = currentSegmentSegmentNode->segment;
-      Color newColor = { segment->r - ((segment->r/70) * i), segment->g - ((segment->g/70) * i), segment->b - ((segment->b/70) * i)};
+      CRGB newColor = CRGB( segment->r - ((segment->r/70) * i), segment->g - ((segment->g/70) * i), segment->b - ((segment->b/70) * i));
       segment->setToColorNoUpdate(newColor);
       currentSegmentSegmentNode = currentSegmentSegmentNode->next;
     }

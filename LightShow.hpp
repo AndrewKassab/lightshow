@@ -4,7 +4,6 @@
 #include <FastLED.h> 
 #include "LightSegment.hpp"
 #include "SegmentList.hpp"
-#include "color.h"
 
 #define NUM_LEDS 262
 
@@ -27,23 +26,27 @@
 #define start 1
 #define end 260
 
-void set_to_color(CRGB leds[], int startIndex, int endIndex, Color color);
+// TODO: Remove this function and all traces
+void set_to_color(CRGB leds[], int startIndex, int endIndex, CRGB color);
 
-void set_one_to_color(CRGB leds[], int index, Color color); 
+// TODO: Remove this function and all traces
+void set_one_to_color(CRGB leds[], int index, CRGB color); 
 
+// TODO: Remove this function and all traces
 void turn_off(CRGB leds[], int startIndex, int endIndex);
 
+// TODO: Remove this function and all traces
 void turn_one_off(CRGB leds[], int index);
 
 void turn_all_off(CRGB leds[]);
 
-void light_all_corners(CRGB leds[], Color color);
+void light_all_corners(CRGB leds[], CRGB color);
 
 void turn_off_all_corners(CRGB leds[]);
 
 void default_setup(CRGB leds[]);
 
-void trace_outwards_evenly(CRGB leds[], int startIndex, int lengthOut, int thickness, int delayTime, Color color);
+void trace_outwards_evenly(CRGB leds[], int startIndex, int lengthOut, int thickness, int delayTime, CRGB color);
 
 // construct new LightSegments that are typically used
 LightSegment * get_left_square(CRGB* leds);
@@ -92,6 +95,4 @@ LightSegment * get_middle_top_center_with_offset(CRGB* leds, int offset);
 LightSegment * get_middle_top_left_center_with_offset(CRGB* leds, int offset);
 LightSegment * get_middle_top_right_center_with_offset(CRGB* leds, int offset);
 
-/* SEQEUNCES */
-void sequence_one(int delayTime, Color colorOne, Color colorTwo);
 #endif

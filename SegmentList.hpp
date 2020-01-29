@@ -11,7 +11,7 @@ class SegmentList{
     SegmentList(LightSegment * head);
     ~SegmentList();
     void add(LightSegment * newSegment);
-    void setAllToColor(Color color);
+    void setAllToColor(CRGB color);
     void turnAllOff();
 
     // lights fade in towards their rgb values 
