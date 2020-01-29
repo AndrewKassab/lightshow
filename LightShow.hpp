@@ -26,20 +26,6 @@
 #define start 1
 #define end 260
 
-// TODO: Remove this function and all traces
-void set_to_color(CRGB leds[], int startIndex, int endIndex, CRGB color);
-
-// TODO: Remove this function and all traces
-void set_one_to_color(CRGB leds[], int index, CRGB color); 
-
-// TODO: Remove this function and all traces
-void turn_off(CRGB leds[], int startIndex, int endIndex);
-
-// TODO: Remove this function and all traces
-void turn_one_off(CRGB leds[], int index);
-
-void turn_all_off(CRGB leds[]);
-
 void light_all_corners(CRGB leds[], CRGB color);
 
 void turn_off_all_corners(CRGB leds[]);

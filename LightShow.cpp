@@ -1,25 +1,5 @@
 #include "LightShow.hpp"
 
-void set_to_color(CRGB leds[], int startIndex, int endIndex, CRGB color){ 
-  for (int i = startIndex; i <= endIndex; i++){
-    leds[i] = color;
-  }
-}
-
-void set_one_to_color(CRGB leds[], int index, CRGB color){
-  leds[index] = color;
-}
-
-void turn_off(CRGB leds[], int startIndex, int endIndex){
-  for (int i = startIndex; i <= endIndex; i++){
-    leds[i] = CRGB(0,0,0);
-  }
-}
-
-void turn_one_off(CRGB leds[], int index){
-  leds[index] = CRGB(0,0,0);
-}
-
 void default_setup(CRGB leds[]){
   FastLED.addLeds<WS2812, 2, GRB>(leds, 262);
 }
@@ -54,12 +34,6 @@ void turn_off_all_corners(CRGB leds[]){
   leds[right_bottom_left_corner] = CRGB(0,0,0);
   leds[right_top_right_corner] = CRGB(0,0,0);
   leds[right_top_left_corner] = CRGB(0,0,0);
-}
-
-void turn_all_off(CRGB leds[]){
-  for (int i = start; i <= end; i++){
-    leds[i] = CRGB(0,0,0);
-  }
 }
 
 void trace_outwards_evenly(CRGB leds[], int startIndex, int lengthOut, int thickness, int delayTime, CRGB color){ 

@@ -60,7 +60,7 @@ void sequence_two(CRGB* leds, int delayTime, CRGB colorOne, CRGB colorTwo){
   LightSegment * rightSquareLeftInSeq = get_right_square_left(leds);
   LightSegment * rightSquareBottomInSeq = get_right_square_bottom(leds);
 
-  turn_all_off(leds);
+  FastLED.clear();
   leds[middle_top_left_corner] = CRGB::White;
   leds[middle_top_right_corner] = CRGB::White;
   leds[middle_bottom_left_corner] = CRGB::White;
