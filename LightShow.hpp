@@ -3,6 +3,7 @@
 
 #include <FastLED.h> 
 #include "LightSegment.hpp"
+#include "SegmentList.hpp"
 
 #define NUM_LEDS 262
 

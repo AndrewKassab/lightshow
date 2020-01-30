@@ -41,13 +41,17 @@ void SegmentList::turnAllOff(){
 }
 
 void SegmentList::fadeAllIn(int delayTime){
+  return;
   SegmentNode * currentSegmentSegmentNode = this->head;
-  for (int i = 1; i <= 70; i++){
+  for (int i = 1; i <= 255; i = i++){
     currentSegmentSegmentNode = this->head;
     while (currentSegmentSegmentNode){
       LightSegment * segment = currentSegmentSegmentNode->segment;
-      CRGB newColor = CRGB( (segment->r/70) * i, (segment->g/70) * i, (segment->b/70) * i );
-      segment->setToColorNoUpdate(newColor);
+      CRGB * currLeds = segment->leds; 
+      int currLedsSize = segment->size;
+      for (int j = 0; j <= currLedsSize; j++){
+          //currLeds[j] += 10;
+      }
       currentSegmentSegmentNode = currentSegmentSegmentNode->next;
     }
     FastLED.show();
@@ -57,12 +61,15 @@ void SegmentList::fadeAllIn(int delayTime){
 
 void SegmentList::fadeAllDown(int delayTime){
   SegmentNode * currentSegmentSegmentNode;
-  for (int i = 1; i <= 70; i++){
+  for (int i = 254; i >= 2; i = i - 2){
     currentSegmentSegmentNode = this->head;
     while (currentSegmentSegmentNode){
       LightSegment * segment = currentSegmentSegmentNode->segment;
-      CRGB newColor = CRGB( segment->r - ((segment->r/70) * i), segment->g - ((segment->g/70) * i), segment->b - ((segment->b/70) * i));
-      segment->setToColorNoUpdate(newColor);
+      CRGB * currLeds = segment->leds;
+      int currLedsSize = segment->size;
+      for ( int j = 0; j <= size; j++){
+        currLeds[j].nscale8(i);
+      }
       currentSegmentSegmentNode = currentSegmentSegmentNode->next;
     }
     FastLED.show();
@@ -72,17 +79,17 @@ void SegmentList::fadeAllDown(int delayTime){
 }
 
 // each segment must be equal in length
-void SegmentList::traceAll(int thickness, int delayTime, boolean * reverse){
-  for (int i = 0; i < this->head->segment->endIndex - this->head->segment->startIndex - thickness + 2; i++){
+void SegmentList::traceAllAndRemain(int thickness, int delayTime, boolean * reverse, CRGB color){
+  for (int i = 0; i < this->head->segment->size - thickness + 2; i++){
     SegmentNode * currentSegment = this->head;
     int segIndex = 0;
     while (currentSegment){
       LightSegment * segment = currentSegment->segment;
       for (int j = 0; j < thickness; j++){
         if (reverse[segIndex]){
-            segment->leds[segment->endIndex-i-j] = CRGB(segment->r,segment->g,segment->b);
+            segment->leds[segment->size-i-j] = color;
         } else {
-            segment->leds[segment->startIndex+i+j] = CRGB(segment->r,segment->g,segment->b);
+            segment->leds[i+j] = color;
         }
       }
       currentSegment = currentSegment->next; 
