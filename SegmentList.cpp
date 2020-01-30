@@ -40,17 +40,22 @@ void SegmentList::turnAllOff(){
   }
 }
 
-void SegmentList::fadeAllIn(int delayTime){
-  return;
+void SegmentList::fadeAllIn(int delayTime, CRGB color){
+  int r_factor = color.r / 70;
+  int g_factor = color.g / 70;
+  int b_factor = color.b / 70;
+  CRGB * currLeds;
   SegmentNode * currentSegmentSegmentNode = this->head;
-  for (int i = 1; i <= 255; i = i++){
+  for (int i = 0; i < 70; i++){
     currentSegmentSegmentNode = this->head;
     while (currentSegmentSegmentNode){
       LightSegment * segment = currentSegmentSegmentNode->segment;
-      CRGB * currLeds = segment->leds; 
+      currLeds = segment->leds; 
       int currLedsSize = segment->size;
       for (int j = 0; j <= currLedsSize; j++){
-          //currLeds[j] += 10;
+          currLeds[j].r += r_factor;
+          currLeds[j].g += g_factor;
+          currLeds[j].b += b_factor;
       }
       currentSegmentSegmentNode = currentSegmentSegmentNode->next;
     }
@@ -68,7 +73,7 @@ void SegmentList::fadeAllDown(int delayTime){
       CRGB * currLeds = segment->leds;
       int currLedsSize = segment->size;
       for ( int j = 0; j <= size; j++){
-        currLeds[j].nscale8(i);
+        //currLeds[j].
       }
       currentSegmentSegmentNode = currentSegmentSegmentNode->next;
     }

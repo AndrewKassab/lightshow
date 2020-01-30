@@ -15,7 +15,7 @@ class SegmentList{
     void turnAllOff();
 
     // lights fade in towards their rgb values 
-    void fadeAllIn(int delayTime);
+    void fadeAllIn(int delayTime, CRGB color);
 
     // lights fade down from their rgb until they're off 
     void fadeAllDown(int delayTime);
