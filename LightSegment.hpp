@@ -11,6 +11,7 @@ class LightSegment{
     void setToColor(CRGB color);
     void turnOff();
     void traceOneColorFromBothEnds(int thickness, int delayTime, CRGB color);
+    void fadeToBlack(int delayTime);
 };
 
 #endif

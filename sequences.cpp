@@ -46,11 +46,11 @@ void sequence_one(CRGB* leds, int delayTime, int thickness, CRGB colorOne, CRGB 
       light_all_corners(leds, CRGB::White);        
       
       FastLED.show();
-  }
+  } 
 }
 
 /* Square Cycle */
-void sequence_two(CRGB* leds, int delayTime, CRGB colorOne, CRGB colorTwo){
+void sequence_two(CRGB* leds, int delayTime, CRGB colorOne, CRGB colorTwo, CRGB colorThree, CRGB colorFour){
   LightSegment * leftSquareLeftInSeq = get_left_square_left(leds);
   LightSegment * leftSquareTopInSeq = get_left_square_top(leds);
   LightSegment * leftSquareRightInSeq = get_left_square_right(leds);
@@ -78,14 +78,14 @@ void sequence_two(CRGB* leds, int delayTime, CRGB colorOne, CRGB colorTwo){
   delay(delayTime);
   leftSquareTopInSeq->turnOff();
   rightSquareTopInSeq->turnOff();
-  leftSquareRightInSeq->setToColor(colorOne);
-  rightSquareLeftInSeq->setToColor(colorOne);
+  leftSquareRightInSeq->setToColor(colorThree);
+  rightSquareLeftInSeq->setToColor(colorThree);
   FastLED.show();
   delay(delayTime);
   leftSquareRightInSeq->turnOff();
   rightSquareLeftInSeq->turnOff();
-  leftSquareBottomInSeq->setToColor(colorTwo);
-  rightSquareBottomInSeq->setToColor(colorTwo);
+  leftSquareBottomInSeq->setToColor(colorFour);
+  rightSquareBottomInSeq->setToColor(colorFour);
   FastLED.show();
   delay(delayTime);
 
@@ -98,4 +98,20 @@ void sequence_two(CRGB* leds, int delayTime, CRGB colorOne, CRGB colorTwo){
   free(rightSquareRightInSeq);
   free(rightSquareLeftInSeq);
   free(rightSquareBottomInSeq);
+}
+
+void sequence_three(CRGB * leds, int thickness, int delayTime, CRGB * colors, int numColors){
+  leds[middle_top_left_corner] = CRGB::White;
+  leds[middle_top_right_corner] = CRGB::White;
+  leds[middle_bottom_left_corner] = CRGB::White;
+  leds[middle_bottom_right_corner] = CRGB::White;
+  leds[middle_top_middle] = CRGB::White;
+  LightSegment * leftSquare = get_left_square(leds);
+  LightSegment * rightSquare = get_right_square(leds);
+  SegmentList squares = SegmentList(leftSquare);
+  squares.add(rightSquare);
+  boolean reverseTable[2] = {true, false};
+  for ( int i = 0; i < numColors; i++ ){
+    squares.traceAllAndRemain(thickness,delayTime,reverseTable, colors[i]);
+  }
 }

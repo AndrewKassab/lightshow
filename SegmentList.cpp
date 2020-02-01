@@ -60,20 +60,30 @@ void SegmentList::fadeAllIn(int delayTime, CRGB color){
       currentSegmentSegmentNode = currentSegmentSegmentNode->next;
     }
     FastLED.show();
-    delay(delayTime);
+    if ( i < 35 ){
+      delay(delayTime*2);
+    } else {
+      delay(delayTime);
+    }
   }
 }
 
+// TODO: Figure this shit out
 void SegmentList::fadeAllDown(int delayTime){
+  int r_factor = this->head->segment->leds[0].r / 70;
+  int g_factor = this->head->segment->leds[0].g / 70;
+  int b_factor = this->head->segment->leds[0].b / 70;
   SegmentNode * currentSegmentSegmentNode;
-  for (int i = 254; i >= 2; i = i - 2){
+  for (int i = 0; i <= 70; i++){
     currentSegmentSegmentNode = this->head;
     while (currentSegmentSegmentNode){
       LightSegment * segment = currentSegmentSegmentNode->segment;
       CRGB * currLeds = segment->leds;
       int currLedsSize = segment->size;
-      for ( int j = 0; j <= size; j++){
-        //currLeds[j].
+      for ( int j = 0; j <= currLedsSize; j++){
+        currLeds[j].r -= r_factor;
+        currLeds[j].g -= g_factor;
+        currLeds[j].b -= b_factor;
       }
       currentSegmentSegmentNode = currentSegmentSegmentNode->next;
     }
