@@ -50,7 +50,7 @@ void sequence_one(CRGB* leds, int delayTime, int thickness, CRGB colorOne, CRGB 
 }
 
 /* Square Cycle */
-void sequence_two(CRGB* leds, int delayTime, CRGB colorOne, CRGB colorTwo, CRGB colorThree, CRGB colorFour){
+void square_side_cycle(CRGB* leds, int delayTime, CRGB colorOne, CRGB colorTwo, CRGB colorThree, CRGB colorFour){
   LightSegment * leftSquareLeftInSeq = get_left_square_left(leds);
   LightSegment * leftSquareTopInSeq = get_left_square_top(leds);
   LightSegment * leftSquareRightInSeq = get_left_square_right(leds);
@@ -100,7 +100,7 @@ void sequence_two(CRGB* leds, int delayTime, CRGB colorOne, CRGB colorTwo, CRGB 
   free(rightSquareBottomInSeq);
 }
 
-void sequence_three(CRGB * leds, int thickness, int delayTime, CRGB * colors, int numColors){
+void square_color_trace(CRGB * leds, int thickness, int delayTime, CRGB * colors, int numColors){
   leds[middle_top_left_corner] = CRGB::White;
   leds[middle_top_right_corner] = CRGB::White;
   leds[middle_bottom_left_corner] = CRGB::White;
@@ -114,4 +114,28 @@ void sequence_three(CRGB * leds, int thickness, int delayTime, CRGB * colors, in
   for ( int i = 0; i < numColors; i++ ){
     squares.traceAllAndRemain(thickness,delayTime,reverseTable, colors[i]);
   }
+}
+
+void up_down_trace(CRGB * leds, int thickness, int delayTime, CRGB colorOne, CRGB colorTwo){
+  LightSegment * leftSquareLeft = get_left_square_left(leds);
+  LightSegment * leftSquareRight = get_left_square_right(leds);
+  LightSegment * rightSquareLeft = get_right_square_left(leds);
+  LightSegment * rightSquareRight = get_right_square_right(leds);
+  LightSegment * middleLeft = get_middle_left(leds);
+  LightSegment * middleRight = get_middle_right(leds);
+  SegmentList lights = SegmentList(leftSquareLeft);
+  lights.add(leftSquareRight);
+  lights.add(rightSquareLeft);
+  lights.add(rightSquareRight);
+  lights.add(middleLeft);
+  lights.add(middleRight);
+  boolean reverseTable[6] = {true, false, true, false, true, false};
+  lights.traceAllDontRemain(thickness, delayTime,reverseTable, colorOne);
+  reverseTable[0] = false;
+  reverseTable[2] = false;
+  reverseTable[4] = false;
+  reverseTable[1] = true;
+  reverseTable[3] = true;
+  reverseTable[5] = true;
+  lights.traceAllDontRemain(thickness, delayTime,reverseTable, colorTwo);
 }

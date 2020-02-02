@@ -22,6 +22,9 @@ class SegmentList{
 
     // lights perform a trace, reverse arrayindicates if a specific segment should trace in reverse
     void traceAllAndRemain(int thickness, int delayTime, boolean * reverse, CRGB color);
+
+    // lights perform a trace, reverse arrayindicates if a specific segment should trace in reverse
+    void traceAllDontRemain(int thickness, int delayTime, boolean * reverse, CRGB color);
 };
 
 #endif

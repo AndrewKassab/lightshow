@@ -114,3 +114,33 @@ void SegmentList::traceAllAndRemain(int thickness, int delayTime, boolean * reve
     delay(delayTime);
   }
 }
+
+void SegmentList::traceAllDontRemain(int thickness, int delayTime, boolean * reverse, CRGB color){
+  for (int i = 0; i < this->head->segment->size - thickness + 2; i++){
+    SegmentNode * currentSegment = this->head;
+    int segIndex = 0;
+    while (currentSegment){
+      LightSegment * segment = currentSegment->segment;
+      for (int j = 0; j < thickness; j++){
+        if (reverse[segIndex]){
+            if (segment->size-i-j >= 0){
+              segment->leds[segment->size-i-j] = color;
+            }
+        } else {
+            if (i+j < segment->size){
+              segment->leds[i+j] = color;
+            }
+        }
+      }
+      if (reverse[segIndex]){
+        segment->leds[segment->size-i+thickness] = CRGB::Black;
+      } else {
+        segment->leds[i-thickness] = CRGB::Black;
+      }
+      currentSegment = currentSegment->next; 
+      segIndex++;
+    }
+    FastLED.show();
+    delay(delayTime);
+  }
+}
