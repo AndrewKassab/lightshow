@@ -13,6 +13,7 @@ class SegmentList{
     void add(LightSegment * newSegment);
     void setAllToColor(CRGB color);
     void turnAllOff();
+    int getLongestSegmentSize();
 
     // lights fade in towards their rgb values 
     void fadeAllIn(int delayTime, CRGB color);

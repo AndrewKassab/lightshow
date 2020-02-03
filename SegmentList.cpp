@@ -16,6 +16,19 @@ SegmentList::~SegmentList(){
   free(currentSegment);
 }
 
+int SegmentList::getLongestSegmentSize(){
+  SegmentNode * currentNode = this->head;
+  int largestSize = 0;
+  while (currentNode){
+    LightSegment * currSegment = currentNode->segment;
+    if (currSegment->size > largestSize){
+      largestSize = currSegment->size;
+    }
+    currentNode = currentNode->next;
+  }
+  return largestSize;
+}
+
 void SegmentList::add(LightSegment * newSegment){
   SegmentNode * currentSegment = this->head;
   while (currentSegment->next){
@@ -95,17 +108,18 @@ void SegmentList::fadeAllDown(int delayTime){
 
 // each segment must be equal in length
 void SegmentList::traceAllAndRemain(int thickness, int delayTime, boolean * reverse, CRGB color){
-  for (int i = 0; i < this->head->segment->size - thickness + 2; i++){
+
+  int largestSize = this->getLongestSegmentSize();
+
+  for (int i = 0; i <= largestSize; i++){
     SegmentNode * currentSegment = this->head;
     int segIndex = 0;
     while (currentSegment){
       LightSegment * segment = currentSegment->segment;
-      for (int j = 0; j < thickness; j++){
-        if (reverse[segIndex]){
-            segment->leds[segment->size-i-j] = color;
-        } else {
-            segment->leds[i+j] = color;
-        }
+      if (reverse[segIndex]){
+          segment->leds[segment->size-i] = color;
+      } else {
+          segment->leds[i] = color;
       }
       currentSegment = currentSegment->next; 
       segIndex++;
@@ -115,26 +129,28 @@ void SegmentList::traceAllAndRemain(int thickness, int delayTime, boolean * reve
   }
 }
 
+// TODO: Fix the erasing at the end
 void SegmentList::traceAllDontRemain(int thickness, int delayTime, boolean * reverse, CRGB color){
-  for (int i = 0; i < this->head->segment->size - thickness + 2; i++){
+
+  int largestSize = this->getLongestSegmentSize();
+
+  for (int i = 0; i < largestSize; i++){
     SegmentNode * currentSegment = this->head;
     int segIndex = 0;
     while (currentSegment){
       LightSegment * segment = currentSegment->segment;
-      for (int j = 0; j < thickness; j++){
-        if (reverse[segIndex]){
-            if (segment->size-i-j >= 0){
-              segment->leds[segment->size-i-j] = color;
-            }
-        } else {
-            if (i+j < segment->size){
-              segment->leds[i+j] = color;
-            }
-        }
-      }
       if (reverse[segIndex]){
-        segment->leds[segment->size-i+thickness] = CRGB::Black;
+          if (segment->size-i >= 0){
+            segment->leds[segment->size-i] = color;
+          }
       } else {
+          if (i < segment->size){
+            segment->leds[i] = color;
+          }
+      }
+      if (reverse[segIndex] && i >= thickness){
+        segment->leds[segment->size-i+thickness] = CRGB::Black;
+      } else if ( i >= thickness ) {
         segment->leds[i-thickness] = CRGB::Black;
       }
       currentSegment = currentSegment->next; 
@@ -143,4 +159,22 @@ void SegmentList::traceAllDontRemain(int thickness, int delayTime, boolean * rev
     FastLED.show();
     delay(delayTime);
   }
+
+  SegmentNode * currentSegment = this->head;
+  int segIndex = 0;
+  for ( int i = 0; i <= thickness; i++){
+    while (currentSegment){
+      LightSegment * segment = currentSegment->segment;
+      if (!reverse[segIndex]){
+        segment->leds[segment->size-thickness+i] = CRGB::Black;
+      } else {
+        segment->leds[thickness - i] = CRGB::Black;
+      }
+      currentSegment = currentSegment->next; 
+      segIndex++;
+    }
+    FastLED.show();
+    delay(delayTime);
+  }
+
 }

@@ -177,3 +177,43 @@ LightSegment * get_middle_top_left_center_with_offset(CRGB* leds, int offset){
 LightSegment * get_middle_top_right_center_with_offset(CRGB* leds, int offset){
   return new LightSegment(leds, middle_top_middle + offset, middle_top_right_corner - offset); 
 }
+
+// TODO:
+/*
+LightSegment * get_left_square_top_right_corner(CRGB * leds){
+  return new LightSegment(leds, left_top_right_corner - 5, left_top_right_corner + 5);
+}
+LightSegment * get_left_square_top_left_corner(CRGB * leds){
+  return new LightSegment(leds, left_top_left_corner - 5, left_top_left_corner + 5);
+}
+LightSegment * get_left_square_bottom_right_corner(CRGB * leds){
+  
+}
+
+LightSegment * get_right_square_top_right_corner(CRGB * leds){
+  
+}
+LightSegment * get_right_square_top_left_corner(CRGB * leds){
+  
+}
+LightSegment * get_right_square_bottom_left_corner(CRGB * leds){
+  
+}
+LightSegment * get_right_square_bottom_right_corner(CRGB * leds){
+  
+}
+
+LightSegment * get_middle_bottom_left_corner(CRGB * leds){
+  
+}
+LightSegment * get_middle_top_left_corner(CRGB * leds){
+  
+}
+LightSegment * get_middle_top_right_corner(CRGB * leds){
+  
+}
+LightSegment * get_middle_bottom_right_corner(CRGB * leds){
+  
+}
+
+*/

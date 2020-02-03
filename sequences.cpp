@@ -114,6 +114,8 @@ void square_color_trace(CRGB * leds, int thickness, int delayTime, CRGB * colors
   for ( int i = 0; i < numColors; i++ ){
     squares.traceAllAndRemain(thickness,delayTime,reverseTable, colors[i]);
   }
+  free(leftSquare);
+  free(rightSquare);
 }
 
 void up_down_trace(CRGB * leds, int thickness, int delayTime, CRGB colorOne, CRGB colorTwo){
@@ -138,4 +140,232 @@ void up_down_trace(CRGB * leds, int thickness, int delayTime, CRGB colorOne, CRG
   reverseTable[3] = true;
   reverseTable[5] = true;
   lights.traceAllDontRemain(thickness, delayTime,reverseTable, colorTwo);
+  free(leftSquareLeft);
+  free(leftSquareRight);
+  free(rightSquareLeft);
+  free(rightSquareRight);
+  free(middleLeft);
+  free(middleRight);
+
 }
+
+void left_right_trace(CRGB * leds, int thickness, int delayTime, CRGB colorOne, CRGB colorTwo){
+  LightSegment * leftSquareTop = get_left_square_top(leds);
+  LightSegment * leftSquareBottom = get_left_square_bottom(leds);
+  LightSegment * rightSquareTop = get_right_square_top(leds);
+  LightSegment * rightSquareBottom = get_right_square_bottom(leds);
+  LightSegment * middleTopLeft = get_middle_top_left(leds);
+  LightSegment * middleTopRight = get_middle_top_right(leds);
+  SegmentList lights = SegmentList(leftSquareTop);
+  lights.add(leftSquareBottom);
+  lights.add(rightSquareTop);
+  lights.add(rightSquareBottom);
+  lights.add(middleTopLeft);
+  lights.add(middleTopRight);
+  boolean reverseTable[6] = {true, true, false, false, true, false};
+  lights.traceAllDontRemain(thickness, delayTime,reverseTable, colorOne);
+  reverseTable[0] = false;
+  reverseTable[2] = true;
+  reverseTable[4] = false;
+  reverseTable[1] = false;
+  reverseTable[3] = true;
+  reverseTable[5] = true;
+  lights.traceAllDontRemain(thickness, delayTime,reverseTable, colorTwo);
+  free(leftSquareTop);
+  free(leftSquareBottom);
+  free(rightSquareTop);
+  free(rightSquareBottom);
+  free(middleTopLeft);
+  free(middleTopRight);
+}
+
+void sides_to_middle(CRGB * leds, int delayTime, CRGB colorOne, CRGB colorTwo, CRGB colorThree){
+  LightSegment * allLights = get_all_lights(leds);
+  allLights->turnOff();
+  LightSegment * leftSquareLeft = get_left_square_left(leds);
+  LightSegment * rightSquareRight = get_right_square_right(leds);
+  SegmentList outer = SegmentList(leftSquareLeft);
+  outer.add(rightSquareRight);
+  LightSegment  * leftSquareRight = get_left_square_right(leds);
+  LightSegment  * rightSquareLeft = get_right_square_left(leds);
+  SegmentList middle = SegmentList(leftSquareRight);
+  middle.add(rightSquareLeft);
+  LightSegment * middleLeft = get_middle_left(leds);
+  LightSegment * middleRight = get_middle_right(leds);
+  SegmentList inner = SegmentList(middleLeft);
+  inner.add(middleRight);
+
+  outer.setAllToColor(colorOne);
+  FastLED.show();
+  delay(delayTime);
+  outer.turnAllOff();
+  middle.setAllToColor(colorTwo);
+  FastLED.show();
+  delay(delayTime);
+  middle.turnAllOff();
+  inner.setAllToColor(colorThree);
+  FastLED.show();
+  delay(delayTime);
+
+  free(allLights);
+  free(middleRight);
+  free(middleLeft);
+  free(leftSquareLeft);
+  free(leftSquareRight);
+  free(rightSquareLeft);
+  free(rightSquareRight);
+  
+}
+
+void trace_squares_and_middle(CRGB * leds, int delayTime, int thickness, CRGB color){
+  LightSegment * leftSquare = get_left_square(leds);
+  LightSegment * rightSquare = get_right_square(leds);
+  LightSegment * middleArch = get_middle_arch(leds); 
+  LightSegment * allLights = get_all_lights(leds);
+  SegmentList lights = SegmentList(leftSquare);
+  lights.add(rightSquare);
+  lights.add(middleArch);
+  lights.add(middleArch);
+
+  boolean reverseTable[4] = {false, true, true, false};
+  lights.traceAllDontRemain(thickness, delayTime, reverseTable, color);
+  allLights->turnOff(); 
+
+  free(leftSquare);
+  free(rightSquare);
+  free(middleArch);
+  free(allLights);
+}
+
+void trace_squares_corners_and_middle(CRGB * leds, int delayTime, int thickness, CRGB color){
+  LightSegment * leftSquare = get_left_square(leds);
+  LightSegment * rightSquare = get_right_square(leds);
+  LightSegment * middleArch = get_middle_arch(leds); 
+  LightSegment * allLights = get_all_lights(leds);
+  SegmentList lights = SegmentList(leftSquare);
+  lights.add(leftSquare);
+  lights.add(rightSquare);
+  lights.add(rightSquare);
+  lights.add(middleArch);
+  lights.add(middleArch);
+
+  boolean reverseTable[6] = {false, true, false, true, true, false};
+  lights.traceAllDontRemain(thickness, delayTime, reverseTable, color);
+  allLights->turnOff(); 
+
+  free(leftSquare);
+  free(rightSquare);
+  free(middleArch);
+  free(allLights);
+}
+
+void top_to_bottom(CRGB * leds, int delayTime, CRGB colorOne, CRGB colorTwo){
+  LightSegment * allLights = get_all_lights(leds);
+  LightSegment * leftSquareTop = get_left_square_top(leds);
+  LightSegment * leftSquareBottom = get_left_square_bottom(leds);
+  LightSegment * rightSquareTop = get_right_square_top(leds);
+  LightSegment * rightSquareBottom = get_right_square_bottom(leds);
+  LightSegment * middleTop = get_middle_top(leds);
+  LightSegment * leftBridge = get_left_bridge(leds);
+  LightSegment * rightBridge = get_right_bridge(leds);
+  allLights->turnOff();
+
+  SegmentList sideTopsAndBridges = SegmentList(leftSquareTop);
+  sideTopsAndBridges.add(rightSquareTop);
+  sideTopsAndBridges.add(rightBridge);
+  sideTopsAndBridges.add(leftBridge);
+
+  SegmentList middleTopAndSideBottoms = SegmentList(leftSquareBottom);
+  middleTopAndSideBottoms.add(rightSquareBottom);
+  middleTopAndSideBottoms.add(middleTop);
+
+  middleTopAndSideBottoms.setAllToColor(colorOne);
+  FastLED.show();
+  delay(delayTime);
+  middleTopAndSideBottoms.turnAllOff();
+  sideTopsAndBridges.setAllToColor(colorTwo);
+  FastLED.show();
+  delay(delayTime);
+  
+  free(allLights);
+  free(leftSquareTop);
+  free(leftSquareBottom);
+  free(rightSquareTop);
+  free(rightSquareBottom);
+  free(middleTop);
+  free(leftBridge);
+  free(rightBridge);
+}
+
+void trace_upwards(CRGB * leds, int thickness, int delayTime, CRGB color){
+  LightSegment * leftSquareLeft = get_left_square_left(leds);
+  LightSegment * leftSquareRight = get_left_square_right(leds);
+  LightSegment * middleLeft = get_middle_left(leds);
+  LightSegment * middleRight = get_middle_right(leds);
+  LightSegment * rightSquareLeft = get_right_square_left(leds);
+  LightSegment * rightSquareRight = get_right_square_right(leds);
+
+  SegmentList lights = SegmentList(leftSquareLeft);
+  lights.add(leftSquareRight);
+  lights.add(middleLeft);
+  lights.add(middleRight);
+  lights.add(rightSquareLeft);
+  lights.add(rightSquareRight);
+
+  boolean reverseTable[6] = {true, false, false, true, true, false};
+
+  lights.traceAllDontRemain(thickness, delayTime, reverseTable, color);
+
+  free(leftSquareLeft);
+  free(leftSquareRight);
+  free(middleLeft);
+  free(middleRight);
+  free(rightSquareLeft);
+  free(rightSquareRight);
+}
+
+void trace_downwards(CRGB * leds, int thickness, int delayTime, CRGB color){
+  LightSegment * leftSquareLeft = get_left_square_left(leds);
+  LightSegment * leftSquareRight = get_left_square_right(leds);
+  LightSegment * middleLeft = get_middle_left(leds);
+  LightSegment * middleRight = get_middle_right(leds);
+  LightSegment * rightSquareLeft = get_right_square_left(leds);
+  LightSegment * rightSquareRight = get_right_square_right(leds);
+
+  SegmentList lights = SegmentList(leftSquareLeft);
+  lights.add(leftSquareRight);
+  lights.add(middleLeft);
+  lights.add(middleRight);
+  lights.add(rightSquareLeft);
+  lights.add(rightSquareRight);
+
+  boolean reverseTable[6] = {false, true, true, false, false, true};
+
+  lights.traceAllDontRemain(thickness, delayTime, reverseTable, color);
+
+  free(leftSquareLeft);
+  free(leftSquareRight);
+  free(middleLeft);
+  free(middleRight);
+  free(rightSquareLeft);
+  free(rightSquareRight);
+}
+
+void trace_to_center(CRGB * leds, int thickness, int delayTime, CRGB color){
+  LightSegment * startToMiddle = new LightSegment(leds, start, middle_top_middle);
+  LightSegment * endToMiddle = new LightSegment(leds, middle_top_middle, end);
+
+  SegmentList lights = SegmentList(startToMiddle);
+  lights.add(endToMiddle);
+  boolean reverseTable[2] = {false, true};
+  lights.traceAllDontRemain(thickness, delayTime, reverseTable, color );
+
+  free(startToMiddle);
+  free(endToMiddle);
+}
+
+/* TODO:
+void corners_cycle(CRGB * leds, int delayTime, CRGB colorOne, CRGB colorTwo){
+  LightSegment * leftSquareTopRight = get_left_square
+}
+*/
