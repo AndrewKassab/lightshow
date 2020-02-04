@@ -355,6 +355,19 @@ void trace_to_center(CRGB * leds, int thickness, int delayTime, CRGB color){
   free(endToMiddle);
 }
 
+void trace_out_from_center(CRGB * leds, int thickness, int delayTime, CRGB color){
+  LightSegment * startToMiddle = new LightSegment(leds, start, middle_top_middle);
+  LightSegment * endToMiddle = new LightSegment(leds, middle_top_middle, end);
+
+  SegmentList lights = SegmentList(startToMiddle);
+  lights.add(endToMiddle);
+  boolean reverseTable[2] = {true, false};
+  lights.traceAllDontRemain(thickness, delayTime, reverseTable, color );
+
+  free(startToMiddle);
+  free(endToMiddle);
+}
+
 /* TODO:
 void corners_cycle(CRGB * leds, int delayTime, CRGB colorOne, CRGB colorTwo){
   LightSegment * leftSquareTopRight = get_left_square
@@ -415,4 +428,52 @@ void fade_squares_up_down(CRGB * leds, int delayFade, int delayUpDown, CRGB colo
 
   free(leftSquare);
   free(rightSquare);
+}
+
+void trace_square_with_delays(CRGB * leds, int thickness, int delayTrace, int delaySides, CRGB colorOne, CRGB colorTwo){
+
+  LightSegment * leftSquareTop = get_left_square_top(leds);
+  LightSegment * rightSquareTop = get_right_square_top(leds);
+
+  SegmentList one = SegmentList(leftSquareTop);
+  one.add(rightSquareTop);
+
+
+  LightSegment * leftSquareLeft = get_left_square_left(leds);
+  LightSegment * rightSquareRight = get_right_square_right(leds);
+  SegmentList two = SegmentList(leftSquareLeft);
+  two.add(rightSquareRight);
+
+  LightSegment * leftSquareBottom = get_left_square_bottom(leds);
+  LightSegment * rightSquareBottom = get_right_square_bottom(leds);
+  SegmentList three = SegmentList(leftSquareBottom);
+  three.add(rightSquareBottom);
+
+  LightSegment * leftSquareRight = get_left_square_right(leds);
+  LightSegment * rightSquareLeft = get_right_square_left(leds);
+  SegmentList four = SegmentList(leftSquareRight);
+  four.add(rightSquareLeft);
+
+  boolean reverseTable[2] = {false, true};
+
+  one.traceAllKeepEnd(thickness, delayTrace, reverseTable, colorOne);
+  delay(delaySides);
+  FastLED.clear();
+  two.traceAllKeepEnd(thickness, delayTrace, reverseTable, colorTwo);
+  delay(delaySides);
+  FastLED.clear();
+  three.traceAllKeepEnd(thickness, delayTrace, reverseTable, colorOne);
+  delay(delaySides);
+  FastLED.clear();
+  four.traceAllKeepEnd(thickness, delayTrace, reverseTable, colorTwo);
+
+  free(leftSquareTop);
+  free(rightSquareTop);
+  free(leftSquareLeft);
+  free(rightSquareRight);
+  free(leftSquareRight);
+  free(rightSquareLeft);
+  free(leftSquareBottom);
+  free(rightSquareBottom);
+
 }

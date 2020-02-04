@@ -17,3 +17,5 @@ void color_trace_to_center(CRGB * leds, int delayTime, CRGB color);
 void color_trace_outwards_from_center(CRGB * leds, int delayTime, CRGB color);
 void color_trace_bridges_to_center(CRGB * leds, int delayTime, CRGB color);
 void fade_squares_up_down(CRGB * leds, int delayFade, int delayUpDown, CRGB color);
+void trace_square_with_delays(CRGB * leds, int thickness, int delayTrace, int delaySides, CRGB colorOne, CRGB colorTwo);
+void trace_out_from_center(CRGB * leds, int thickness, int delayTime, CRGB color);
