@@ -54,56 +54,42 @@ void SegmentList::turnAllOff(){
 }
 
 void SegmentList::fadeAllIn(int delayTime, CRGB color){
-  int r_factor = color.r / 70;
-  int g_factor = color.g / 70;
-  int b_factor = color.b / 70;
   CRGB * currLeds;
   SegmentNode * currentSegmentSegmentNode = this->head;
-  for (int i = 0; i < 70; i++){
+  for (int i = 0; i <= 255; i++){
     currentSegmentSegmentNode = this->head;
     while (currentSegmentSegmentNode){
       LightSegment * segment = currentSegmentSegmentNode->segment;
       currLeds = segment->leds; 
       int currLedsSize = segment->size;
       for (int j = 0; j <= currLedsSize; j++){
-          currLeds[j].r += r_factor;
-          currLeds[j].g += g_factor;
-          currLeds[j].b += b_factor;
-      }
-      currentSegmentSegmentNode = currentSegmentSegmentNode->next;
-    }
-    FastLED.show();
-    if ( i < 35 ){
-      delay(delayTime*2);
-    } else {
-      delay(delayTime);
-    }
-  }
-}
-
-// TODO: Figure this shit out
-void SegmentList::fadeAllDown(int delayTime){
-  int r_factor = this->head->segment->leds[0].r / 70;
-  int g_factor = this->head->segment->leds[0].g / 70;
-  int b_factor = this->head->segment->leds[0].b / 70;
-  SegmentNode * currentSegmentSegmentNode;
-  for (int i = 0; i <= 70; i++){
-    currentSegmentSegmentNode = this->head;
-    while (currentSegmentSegmentNode){
-      LightSegment * segment = currentSegmentSegmentNode->segment;
-      CRGB * currLeds = segment->leds;
-      int currLedsSize = segment->size;
-      for ( int j = 0; j <= currLedsSize; j++){
-        currLeds[j].r -= r_factor;
-        currLeds[j].g -= g_factor;
-        currLeds[j].b -= b_factor;
+          currLeds[j] = color;
+          currLeds[j].maximizeBrightness(i);
       }
       currentSegmentSegmentNode = currentSegmentSegmentNode->next;
     }
     FastLED.show();
     delay(delayTime);
-  }  
-  turnAllOff();
+  }
+}
+
+void SegmentList::fadeAllDown(int delayTime){
+  CRGB * currLeds;
+  SegmentNode * currentSegmentSegmentNode = this->head;
+  for (int i = 255; i >= 210; i--){
+    currentSegmentSegmentNode = this->head;
+    while (currentSegmentSegmentNode){
+      LightSegment * segment = currentSegmentSegmentNode->segment;
+      currLeds = segment->leds; 
+      int currLedsSize = segment->size;
+      for (int j = 0; j <= currLedsSize; j++){
+        currLeds[j].nscale8(i);
+      }
+      currentSegmentSegmentNode = currentSegmentSegmentNode->next;
+    }
+    FastLED.show();
+    delay(delayTime);
+  }
 }
 
 // each segment must be equal in length
