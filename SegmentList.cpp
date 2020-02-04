@@ -120,17 +120,17 @@ void SegmentList::traceAllDontRemain(int thickness, int delayTime, boolean * rev
 
   int largestSize = this->getLongestSegmentSize();
 
-  for (int i = 0; i < largestSize; i++){
+  for (int i = 0; i <= largestSize + thickness; i++){
     SegmentNode * currentSegment = this->head;
     int segIndex = 0;
     while (currentSegment){
       LightSegment * segment = currentSegment->segment;
       if (reverse[segIndex]){
-          if (segment->size-i >= 0){
+          if (segment->size-i >= 0 && i < largestSize){
             segment->leds[segment->size-i] = color;
           }
       } else {
-          if (i < segment->size){
+          if (i <= segment->size && i < largestSize){
             segment->leds[i] = color;
           }
       }
@@ -146,15 +146,30 @@ void SegmentList::traceAllDontRemain(int thickness, int delayTime, boolean * rev
     delay(delayTime);
   }
 
-  SegmentNode * currentSegment = this->head;
-  int segIndex = 0;
-  for ( int i = 0; i <= thickness; i++){
+}
+
+void SegmentList::traceAllKeepEnd(int thickness, int delayTime, boolean * reverse, CRGB color){
+
+  int largestSize = this->getLongestSegmentSize();
+
+  for (int i = 0; i <= largestSize; i++){
+    SegmentNode * currentSegment = this->head;
+    int segIndex = 0;
     while (currentSegment){
       LightSegment * segment = currentSegment->segment;
-      if (!reverse[segIndex]){
-        segment->leds[segment->size-thickness+i] = CRGB::Black;
+      if (reverse[segIndex]){
+          if (segment->size-i >= 0 ){
+            segment->leds[segment->size-i] = color;
+          }
       } else {
-        segment->leds[thickness - i] = CRGB::Black;
+          if (i <= segment->size ){
+            segment->leds[i] = color;
+          }
+      }
+      if (reverse[segIndex] && i >= thickness){
+        segment->leds[segment->size-i+thickness] = CRGB::Black;
+      } else if ( i >= thickness ) {
+        segment->leds[i-thickness] = CRGB::Black;
       }
       currentSegment = currentSegment->next; 
       segIndex++;
