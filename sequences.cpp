@@ -370,23 +370,23 @@ void trace_out_from_center(CRGB * leds, int thickness, int delayTime, CRGB color
 
 void corners_cycle(CRGB * leds, int delayTime, CRGB colorOne, CRGB colorTwo){
   
-  LightSegment * leftSquareTopRight = get_left_square_top_right_corner(leds, 5);
-  LightSegment * leftSquareTopLeft = get_left_square_top_left_corner(leds, 5);
-  LightSegment * leftSquareBottomLeft = get_left_square_bottom_left_corner(leds, 5);
-  LightSegment * leftSquareBottomRight = new LightSegment(leds, left_bottom_right_corner - 5, left_bottom_right_corner);
-  LightSegment * leftSquareRightBottom = new LightSegment(leds, start, start + 4);
-  LightSegment * leftBridgeLeft = new LightSegment(leds, left_bottom_right_corner, left_bottom_right_corner + 5);
-  LightSegment * middleBottomLeftCorner = get_middle_bottom_left_corner(leds, 5);
-  LightSegment * middleTopLeftCorner = get_middle_top_left_corner(leds, 5);
-  LightSegment * middleTopRightCorner = get_middle_top_right_corner(leds, 5);
-  LightSegment * middleBottomRightCorner = get_middle_bottom_right_corner(leds, 5);
-  LightSegment * rightBridgeLeft = new LightSegment(leds, right_bottom_left_corner - 5; right_bottom_right_corner);
-  LightSegment * rightBottomLeft = new LightSegment(leds, right_bottom_left_corner, right_bottom_left_corner + 5);
-  LightSegment * rightLeftBottom = new LightSegment(leds, end - 5, end);
-  LightSegment * rightBottomRightCorner = get_right_square_bottom_right_corner(leds, 5);
-  LightSegment * rightTopRightCorner  = get_right_square_top_right_corner(leds, 5);
-  LightSegment * rightTopLeftCorner  = get_right_square_top_left_corner(leds, 5);
-  LightSegment * middleTopMiddle = get_middle_top_center_with_offset(leds, 5);
+  int offset = 6;
+
+  LightSegment * leftSquareTopRight = get_left_square_top_right_corner(leds, offset);
+  LightSegment * leftSquareTopLeft = get_left_square_top_left_corner(leds, offset);
+  LightSegment * leftSquareBottomLeft = get_left_square_bottom_left_corner(leds, offset);
+  LightSegment * leftSquareBottomRight = new LightSegment(leds, left_bottom_right_corner - offset, left_bottom_right_corner);
+  LightSegment * leftSquareRightBottom = new LightSegment(leds, start, start + offset - 1);
+  LightSegment * middleBottomLeftCorner = get_middle_bottom_left_corner(leds, offset);
+  LightSegment * middleTopLeftCorner = get_middle_top_left_corner(leds, offset);
+  LightSegment * middleTopRightCorner = get_middle_top_right_corner(leds, offset);
+  LightSegment * middleBottomRightCorner = get_middle_bottom_right_corner(leds, offset);
+  LightSegment * rightBottomLeft = new LightSegment(leds, right_bottom_left_corner, right_bottom_left_corner + offset);
+  LightSegment * rightLeftBottom = new LightSegment(leds, end - offset - 1, end);
+  LightSegment * rightBottomRightCorner = get_right_square_bottom_right_corner(leds, offset);
+  LightSegment * rightTopRightCorner  = get_right_square_top_right_corner(leds, offset);
+  LightSegment * rightTopLeftCorner  = get_right_square_top_left_corner(leds, offset);
+  LightSegment * middleTopMiddle = get_middle_top_center_with_offset(leds, offset - 2);
 
   SegmentList first = SegmentList(leftSquareTopRight);
   first.add(rightTopLeftCorner);
@@ -398,10 +398,6 @@ void corners_cycle(CRGB * leds, int delayTime, CRGB colorOne, CRGB colorTwo){
   fourth.add(rightBottomLeft);
   fourth.add(rightLeftBottom);
   fourth.add(leftSquareRightBottom);
-  SegmentList fifth = SegmentList(leftSquareRightBottom);
-  fifth.add(leftBridgeLeft);
-  fifth.add(rightBottomLeft);
-  fifth.add(rightBridgeLeft);
   SegmentList sixth = SegmentList(middleBottomLeftCorner);
   sixth.add(middleBottomRightCorner);
   SegmentList seventh = SegmentList(middleTopLeftCorner);
@@ -410,32 +406,22 @@ void corners_cycle(CRGB * leds, int delayTime, CRGB colorOne, CRGB colorTwo){
   first.setAllToColor(colorOne);
   FastLED.show();
   delay(delayTime);
-  first.turnAllOff();
   second.setAllToColor(colorTwo);
   FastLED.show();
   delay(delayTime);
-  second.turnAllOff();
   third.setAllToColor(colorOne);
   FastLED.show();
   delay(delayTime);
-  third.turnAllOff();
   fourth.setAllToColor(colorTwo);
   FastLED.show();
   delay(delayTime);
-  fourth.turnAllOff();
-  fifth.setAllToColor(colorOne);
+  sixth.setAllToColor(colorOne);
   FastLED.show();
   delay(delayTime);
-  fifth.turnAllOff();
-  sixth.setAllToColor(colorTwo);
+  seventh.setAllToColor(colorTwo);
   FastLED.show();
   delay(delayTime);
-  sixth.turnAllOff();
-  seventh.setAllToColor(colorOne);
-  FastLED.show();
-  delay(delayTime);
-  seventh.turnAllOff();
-  middleTopMiddle.setToColor(colorTwo);
+  middleTopMiddle->setToColor(colorOne);
   FastLED.show();
 
   free(leftSquareTopRight);
@@ -443,12 +429,10 @@ void corners_cycle(CRGB * leds, int delayTime, CRGB colorOne, CRGB colorTwo){
   free(leftSquareBottomLeft);
   free(leftSquareBottomRight);
   free(leftSquareRightBottom);
-  free(leftBridgeLeft);
   free(middleBottomLeftCorner);
   free(middleTopLeftCorner);
   free(middleTopRightCorner);
   free(middleBottomRightCorner);
-  free(rightBridgeLeft);
   free(rightBottomLeft);
   free(rightLeftBottom);
   free(rightBottomRightCorner);

@@ -81,20 +81,18 @@ LightSegment * get_middle_top_center_with_offset(CRGB* leds, int offset);
 LightSegment * get_middle_top_left_center_with_offset(CRGB* leds, int offset);
 LightSegment * get_middle_top_right_center_with_offset(CRGB* leds, int offset);
 
-LightSegment * get_left_square_top_right_corner(CRGB * leds);
-LightSegment * get_left_square_top_left_corner(CRGB * leds);
-LightSegment * get_left_square_bottom_right_corner(CRGB * leds);
-LightSegment * get_left_square_bottom_right_corner(CRGB * leds);
+LightSegment * get_left_square_top_right_corner(CRGB * leds, int offset);
+LightSegment * get_left_square_top_left_corner(CRGB * leds, int offset);
+LightSegment * get_left_square_bottom_left_corner(CRGB * leds, int offset);
 
-LightSegment * get_right_square_top_right_corner(CRGB * leds);
-LightSegment * get_right_square_top_left_corner(CRGB * leds);
-LightSegment * get_right_square_bottom_left_corner(CRGB * leds);
-LightSegment * get_right_square_bottom_right_corner(CRGB * leds);
+LightSegment * get_right_square_top_right_corner(CRGB * leds, int offset);
+LightSegment * get_right_square_top_left_corner(CRGB * leds, int offset);
+LightSegment * get_right_square_bottom_right_corner(CRGB * leds, int offset);
 
-LightSegment * get_middle_bottom_left_corner(CRGB * leds);
-LightSegment * get_middle_top_left_corner(CRGB * leds);
-LightSegment * get_middle_top_right_corner(CRGB * leds);
-LightSegment * get_middle_bottom_right_corner(CRGB * leds);
+LightSegment * get_middle_bottom_left_corner(CRGB * leds, int offset);
+LightSegment * get_middle_top_left_corner(CRGB * leds, int offset);
+LightSegment * get_middle_top_right_corner(CRGB * leds, int offset);
+LightSegment * get_middle_bottom_right_corner(CRGB * leds, int offset);
 
 
 #endif

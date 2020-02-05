@@ -169,7 +169,7 @@ LightSegment * get_middle_right_center_with_offset(CRGB* leds, int offset){
 }
 
 LightSegment * get_middle_top_center_with_offset(CRGB* leds, int offset){
-  return new LightSegment(leds, middle_top_left_corner + offset, middle_top_right_corner - offset); 
+  return new LightSegment(leds, middle_top_middle - offset, middle_top_middle + offset); 
 }
 LightSegment * get_middle_top_left_center_with_offset(CRGB* leds, int offset){
   return new LightSegment(leds, middle_top_left_corner + offset, middle_top_middle - offset); 
@@ -184,9 +184,12 @@ LightSegment * get_left_square_top_right_corner(CRGB * leds, int offset){
 LightSegment * get_left_square_top_left_corner(CRGB * leds, int offset){
   return new LightSegment(leds, left_top_left_corner - offset, left_top_left_corner + offset);
 }
+LightSegment * get_left_square_bottom_left_corner(CRGB * leds, int offset){
+  return new LightSegment(leds, left_bottom_left_corner - offset, left_bottom_left_corner + offset);
+}
 
 LightSegment * get_right_square_top_right_corner(CRGB * leds, int offset){
-  return new LightSegment(leds, right_top_right_corner - offset, right_top_right_corner - offset);
+  return new LightSegment(leds, right_top_right_corner - offset, right_top_right_corner + offset);
 }
 LightSegment * get_right_square_top_left_corner(CRGB * leds, int offset){
   return new LightSegment(leds, right_top_left_corner - offset, right_top_left_corner + offset); 
