@@ -12,7 +12,7 @@ void top_to_bottom(CRGB * leds, int delayTime, CRGB colorOne, CRGB colorTwo);
 void trace_upwards(CRGB * leds, int thickness, int delayTime, CRGB color);
 void trace_downwards(CRGB * leds, int thickness, int delayTime, CRGB color);
 void trace_to_center(CRGB * leds, int thickness, int delayTime, CRGB color);
-void corners_Cycle(CRGB * leds, int delayTime, CRGB colorOne, CRGB colorTwo);
+void corners_cycle(CRGB * leds, int delayTime, CRGB colorOne, CRGB colorTwo);
 void color_trace_to_center(CRGB * leds, int delayTime, CRGB color);
 void color_trace_outwards_from_center(CRGB * leds, int delayTime, CRGB color);
 void color_trace_bridges_to_center(CRGB * leds, int delayTime, CRGB color);
