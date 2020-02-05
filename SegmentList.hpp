@@ -2,7 +2,7 @@
 #define LIST 
 
 #include "SegmentNode.hpp"
-#include "LightShow.hpp"
+#include "LightSegment.hpp"
 
 class SegmentList{
   public:
