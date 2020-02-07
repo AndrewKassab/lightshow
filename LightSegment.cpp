@@ -38,25 +38,13 @@ void LightSegment::traceOneColorFromBothEnds(int thickness, int delayTime, CRGB 
 }
 
 void LightSegment::fadeToBlack(int delayTime){
-  int r_factor = this->leds[0].r / 70;
-  int g_factor = this->leds[0].g / 70;
-  int b_factor = this->leds[0].b / 70;
-  for (int i = 0; i <= 70; i++){
-    for ( int j = 0; j <= size; j++){
-      if (leds[j].r > 0){
-        leds[j].r -= r_factor;
-      }
-      if (leds[j].g > 0){
-        leds[j].g -= g_factor;
-      }
-      if (leds[j].b > 0){
-        leds[j].b -= b_factor;
-      }
+  for (int i = 255; i >= 210; i--){
+    for (int j = 0; j <= this->size; j++){
+      this->leds[j].nscale8(i);
     }
     FastLED.show();
     delay(delayTime);
-  }  
-  turnOff();
+  }
 }
 
 void LightSegment::fadeUp(int delayTime, CRGB color){

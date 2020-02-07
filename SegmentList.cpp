@@ -115,7 +115,6 @@ void SegmentList::traceAllAndRemain(int thickness, int delayTime, boolean * reve
   }
 }
 
-// TODO: Fix the erasing at the end
 void SegmentList::traceAllDontRemain(int thickness, int delayTime, boolean * reverse, CRGB color){
 
   int largestSize = this->getLongestSegmentSize();
