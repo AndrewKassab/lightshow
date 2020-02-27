@@ -56,7 +56,7 @@ void SegmentList::turnAllOff(){
 void SegmentList::fadeAllIn(int delayTime, CRGB color){
   CRGB * currLeds;
   SegmentNode * currentSegmentSegmentNode = this->head;
-  for (int i = 0; i <= 255; i++){
+  for (int i = 0; i <= 255; i = i + 2){
     currentSegmentSegmentNode = this->head;
     while (currentSegmentSegmentNode){
       LightSegment * segment = currentSegmentSegmentNode->segment;
