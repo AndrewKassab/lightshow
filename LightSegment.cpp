@@ -48,7 +48,7 @@ void LightSegment::fadeToBlack(int delayTime){
 }
 
 void LightSegment::fadeUp(int delayTime, CRGB color){
-  for (int i = 0; i<= 255; i++){
+  for (int i = 0; i<= 255; i = i + 2){
     for (int j = 0; j <= this->size; j++){
       this->leds[j] = color;
       this->leds[j].maximizeBrightness(i);

@@ -102,9 +102,9 @@ void SegmentList::traceAllAndRemain(int thickness, int delayTime, boolean * reve
     int segIndex = 0;
     while (currentSegment){
       LightSegment * segment = currentSegment->segment;
-      if (reverse[segIndex]){
+      if (reverse[segIndex] & i <= segment->size){
           segment->leds[segment->size-i] = color;
-      } else {
+      } else if ( i <= segment->size) {
           segment->leds[i] = color;
       }
       currentSegment = currentSegment->next; 
