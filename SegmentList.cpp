@@ -178,3 +178,14 @@ void SegmentList::traceAllKeepEnd(int thickness, int delayTime, boolean * revers
   }
 
 }
+
+void SegmentList::strobe(int delayTime, int numTimes, CRGB color){
+  for ( int i = 0; i < numTimes; i++){
+    setAllToColor(color);
+    FastLED.show();
+    delay(delayTime);
+    turnAllOff();
+    FastLED.show();
+    delay(delayTime);
+  }  
+}

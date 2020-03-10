@@ -42,6 +42,13 @@ class SegmentList{
      * trace in reverse
      */
     void traceAllKeepEnd(int thickness, int delayTime, boolean * reverse, CRGB color);
+
+    /* Strobe effect
+     * delayTime - delay between strobes
+     * numTimes - amount of times to strobe
+     */
+    void strobe(int delayTime, int numTimes, CRGB color);
+
 };
 
 #endif
